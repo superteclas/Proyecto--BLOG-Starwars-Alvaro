@@ -6,10 +6,14 @@ const getState = ({ getStore, getActions, setStore }) => {
         actions: {
             getAllCharacters: () => {
                 fetch("https://www.swapi.tech/api/people")
+				
                     .then(res => res.json())
                     .then(data => setStore({ characters: data.results || [] })) 
+					
                     .catch(error => console.log(error));
+					
             }
+			
         }
     };
 };
