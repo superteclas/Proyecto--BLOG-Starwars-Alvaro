@@ -15,28 +15,31 @@ export const Home = () => {
 
     return (
         <div>
-            <div className="cards-container">
-                {store.characters.map((character) => {
-                    return (
+            <div className="cards-section">
+                <h2>Characters</h2>
+                <div className="cards-container">
+                    {store.characters.map((character) => (
                         <Card name={character.name} key={character.uid} />
-                    );
-                })}
+                    ))}
+                </div>
             </div>
 
-            <div className="cards-container">
-                {store.planets.map((planet) => {
-                    return (
+            <div className="cards-section">
+                <h2>Planets</h2>
+                <div className="cards-container">
+                    {store.planets.map((planet) => (
                         <Card name={planet.name} key={planet.uid} />
-                    );
-                })}
+                    ))}
+                </div>
             </div>
 
-            <div className="cards-container">
-                {store.vehicles.map((vehicles) => {
-                    return (
-                        <Card name={vehicles.name} key={vehicles.uid} />
-                    );
-                })}
+            <div className="cards-section">
+                <h2>Vehicles</h2>
+                <div className="cards-container">
+                    {store.vehicles.map((vehicle) => (
+                        <Card name={vehicle.name} key={vehicle.uid} />
+                    ))}
+                </div>
             </div>
         </div>
     );
