@@ -21,7 +21,7 @@ export const Home = () => {
                         <Card
                             name={character.name}
                             gender={character.gender}
-                            id={character.1id} // Pasar la ID del personaje como una propiedad
+                            id={character.uid} // Pasar la ID del personaje como una propiedad
                             key={character.uid}
                         />
                     ))}
