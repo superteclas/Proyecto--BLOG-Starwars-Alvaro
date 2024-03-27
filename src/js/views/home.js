@@ -2,7 +2,7 @@
 
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext.js";
-import { Card } from "../component/card.js"; // Asegúrate de que la ruta de importación sea correcta
+import { Card } from "../component/card.js";
 import "../../styles/home.css";
 
 export const Home = () => {
@@ -21,6 +21,7 @@ export const Home = () => {
                         <Card
                             name={character.name}
                             gender={character.gender}
+                            id={character.1id} // Pasar la ID del personaje como una propiedad
                             key={character.uid}
                         />
                     ))}
