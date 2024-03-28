@@ -20,7 +20,7 @@ export const Home = () => {
                     {store.characters.map((character) => (
                         <Card
                             name={character.name}
-                            gender={character.gender}
+                            gender={character.name}
                             id={character.uid} // Pasar la ID del personaje como una propiedad
                             key={character.uid}
                         />
