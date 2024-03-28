@@ -1,5 +1,3 @@
-// En el componente Card.js
-
 import React, { useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext.js";
@@ -11,7 +9,7 @@ export const Card = (props) => {
     useEffect(() => {
         // Obtener los detalles del personaje al cargar la página
         if (props.id) {
-            actions.getCharacterDetails(props.id);
+            actions.getCharacterDetails(props.id); // Corregir aquí
         }
     }, [props.id]); // Ejecutar el efecto cuando cambie la ID del personaje
 
@@ -20,9 +18,9 @@ export const Card = (props) => {
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/2560px-Star_Wars_Logo.svg.png" className="card-img-top" alt="..." />
             <div className="card-body">
                 <h5 className="card-title">{props.name}</h5>
-                <p className="card-text">Gender: {props.id}</p>
-                <p className="card-text">Hair Color: {props.name}</p> 
-                <p className="card-text">Eye-Color: {props.name}</p>  {/* Mostrar el género del personaje */}
+                <p className="card-text">Gender: {character.gender}</p>
+                <p className="card-text">Hair Color: {character.hairColor}</p> {/* Corregir aquí */}
+                <p className="card-text">Eye-Color: {character.eyeColor}</p> {/* Corregir aquí */}
                 <a href="#" className="btn btn-primary">Go somewhere</a>
             </div>
         </div>
@@ -35,4 +33,3 @@ Card.propTypes = {
 };
 
 export default Card;
-

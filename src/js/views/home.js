@@ -1,5 +1,3 @@
-// En el archivo Home.js
-
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext.js";
 import { Card } from "../component/card.js";
@@ -20,7 +18,7 @@ export const Home = () => {
                     {store.characters.map((character) => (
                         <Card
                             name={character.name}
-                            gender={character.name}
+                            gender={character.gender}
                             id={character.uid} // Pasar la ID del personaje como una propiedad
                             key={character.uid}
                         />

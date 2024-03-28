@@ -36,14 +36,22 @@ const getState = ({ getStore, getActions, setStore }) => {
             getCharacterDetails: (id) => {
                 fetch(`https://www.swapi.tech/api/people/${id}`)
                     .then(res => res.json())
-                    .then(data => setStore({ 
-                        character: {
-                            id: id, // Almacenar la ID del personaje seleccionado
-                            details: data.result.properties || {} // Almacenar los detalles del personaje seleccionado
-                        }
-                    }))
+                    .then(data => {
+                        const characterDetails = data.result.properties || {};
+                        setStore({
+                            character: {
+                                id: id,
+                                details: characterDetails,
+                                gender: characterDetails.gender || '',
+                                hairColor: characterDetails.hair_color || '',
+                                eyeColor: characterDetails.eye_color || ''
+                            }
+                        });
+                    })
                     .catch(error => console.log(error));
             }
+            
+            
         }
     };
 };
