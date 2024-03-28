@@ -13,16 +13,19 @@ export const Home = () => {
     return (
         <div>
             <div className="cards-section">
-                <h2>Characters</h2>
+                <h2 style={{ color: "red" }}>Characters</h2>
                 <div className="cards-container">
-                    {store.characters.map((character) => (
-                        <Card
-                            name={character.name}
-                            gender={character.gender}
-                            id={character.uid} // Pasar la ID del personaje como una propiedad
-                            key={character.uid}
-                        />
-                    ))}
+                    <div className="row flex-nowrap overflow-auto">
+                        {store.characters.map((character) => (
+                            <div className="col" key={character.uid}>
+                                <Card
+                                    name={character.name}
+                                    gender={character.gender}
+                                    id={character.uid}
+                                />
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>

@@ -9,9 +9,22 @@ const getState = ({ getStore, getActions, setStore }) => {
             character: {
                 id: null, // Agregar una clave para almacenar la ID del personaje seleccionado
                 details: {} // Agregar una clave para almacenar los detalles del personaje seleccionado
-            }
+            },
+            favorites: []
         },
         actions: {
+            
+            addItem: item => {
+				const store = getStore();
+				setStore({ favorites: [...store.favorites, { item }] });
+			},
+
+			removeItem: id => {
+				let value = document.getElementById(id).title;
+				const store = getStore();
+				setStore({ favorites: store.favorites.filter(fav => fav.item !== value) });
+			},
+
             getAllCharacters: () => {
                 fetch("https://www.swapi.tech/api/people")
                     .then(res => res.json())
@@ -37,6 +50,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 fetch(`https://www.swapi.tech/api/people/${id}`)
                     .then(res => res.json())
                     .then(data => {
+                        
                         const characterDetails = data.result.properties || {};
                         setStore({
                             character: {
