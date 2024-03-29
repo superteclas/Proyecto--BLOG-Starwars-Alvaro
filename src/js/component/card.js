@@ -9,9 +9,13 @@ export const Card = (props) => {
     useEffect(() => {
         // Obtener los detalles del personaje al cargar la página
         if (props.id) {
-            actions.getCharacterDetails(props.id); // Corregir aquí
+            actions.getCharacterDetails(props.id);
         }
-    }, [props.id]); // Ejecutar el efecto cuando cambie la ID del personaje
+    }, [props.id]);
+
+    const handleAddToFavorites = () => {
+        actions.addItem(props.character.name);
+    };
 
     return (
         <div className="card" style={{ width: "18rem" }}>
@@ -19,9 +23,14 @@ export const Card = (props) => {
             <div className="card-body">
                 <h5 className="card-title">{props.name}</h5>
                 <p className="card-text">Gender: {character.gender}</p>
-                <p className="card-text">Hair Color: {character.hairColor}</p> {/* Corregir aquí */}
-                <p className="card-text">Eye-Color: {character.eyeColor}</p> {/* Corregir aquí */}
-                <a href="#" className="btn btn-primary">Go somewhere</a>
+                <p className="card-text">Hair Color: {character.hairColor}</p>
+                <p className="card-text">Eye-Color: {character.eyeColor}</p>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <button className="btn btn-link" onClick={handleAddToFavorites}>
+                    <i className="fa-regular fa-heart"></i>
+                    </button>
+                    <a href="#" className="btn btn-primary">Go somewhere</a>
+                </div>
             </div>
         </div>
     );
