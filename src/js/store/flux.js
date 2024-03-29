@@ -19,11 +19,11 @@ const getState = ({ getStore, getActions, setStore }) => {
                 setStore({ favorites: [...store.favorites, item] }); // Elimina el objeto { item }
             },
 
-			removeItem: id => {
-				let value = document.getElementById(id).title;
-				const store = getStore();
-				setStore({ favorites: store.favorites.filter(fav => fav.item !== value) });
-			},
+			removeItem: itemName => {
+                const store = getStore();
+                const updatedFavorites = store.favorites.filter(favorite => favorite !== itemName);
+                setStore({ favorites: updatedFavorites });
+            },
 
             getAllCharacters: () => {
                 fetch("https://www.swapi.tech/api/people")

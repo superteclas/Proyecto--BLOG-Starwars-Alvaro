@@ -8,8 +8,8 @@ export const Navbar = () => {
     const { favorites } = store;
 
     const handleRemoveFavorite = (favoriteName) => {
-        actions.removeFavorite(favoriteName);
-    };
+      actions.removeItem(favoriteName);
+  };
 
     const handleAddToFavorites = (characterName) => {
         actions.addItem(characterName);
@@ -30,7 +30,7 @@ export const Navbar = () => {
                     {favorites.map((favorite, index) => (
                         <li key={index}>
                             <span className="dropdown-item">{favorite}</span>
-                            <i className="fa-solid fa-trash" onClick={() => handleRemoveFavorite(favorites)}></i>
+                            <i className="fa-solid fa-trash" onClick={() => handleRemoveFavorite(favorite)}></i>
                         </li>
                     ))}
                     {favorites.length === 0 && (
