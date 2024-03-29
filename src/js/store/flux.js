@@ -15,9 +15,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         actions: {
             
             addItem: item => {
-				const store = getStore();
-				setStore({ favorites: [...store.favorites, { item }] });
-			},
+                const store = getStore();
+                setStore({ favorites: [...store.favorites, item] }); // Elimina el objeto { item }
+            },
 
 			removeItem: id => {
 				let value = document.getElementById(id).title;

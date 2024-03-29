@@ -14,7 +14,8 @@ export const Card = (props) => {
     }, [props.id]);
 
     const handleAddToFavorites = () => {
-        actions.addItem(props.character.name);
+        // Asegúrate de que props.character.name contenga el nombre del personaje
+        actions.addItem(props.name); // Aquí cambia props.character.name por props.name
     };
 
     return (
@@ -27,7 +28,7 @@ export const Card = (props) => {
                 <p className="card-text">Eye-Color: {character.eyeColor}</p>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <button className="btn btn-link" onClick={handleAddToFavorites}>
-                    <i className="fa-regular fa-heart"></i>
+                        <i className="fa-regular fa-heart"></i>
                     </button>
                     <a href="#" className="btn btn-primary">Go somewhere</a>
                 </div>
