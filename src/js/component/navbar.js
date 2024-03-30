@@ -1,3 +1,7 @@
+import React, { useContext } from "react"; // Asegúrate de importar useContext desde React
+import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
+
 export const Navbar = () => {
     const { store, actions } = useContext(Context);
     const { favorites } = store;
