@@ -1,18 +1,9 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import { Context } from "../store/appContext";
-
-
 export const Navbar = () => {
     const { store, actions } = useContext(Context);
     const { favorites } = store;
 
     const handleRemoveFavorite = (favoriteName) => {
-      actions.removeItem(favoriteName);
-  };
-
-    const handleAddToFavorites = (characterName) => {
-        actions.addItem(characterName);
+        actions.removeItem(favoriteName);
     };
 
     return (

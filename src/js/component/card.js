@@ -30,7 +30,7 @@ export const Card = (props) => {
                     <button className="btn btn-link" onClick={handleAddToFavorites}>
                         <i className="fa-regular fa-heart"></i>
                     </button>
-                    <a href="#" className="btn btn-primary">Go somewhere</a>
+                    <a href="#" className="btn btn-primary">Más info</a>
                 </div>
             </div>
         </div>
