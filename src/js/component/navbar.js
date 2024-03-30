@@ -25,7 +25,7 @@ export const Navbar = () => {
                     {favorites.map((favorite, index) => (
                         <li key={index}>
                             <span className="dropdown-item">{favorite}</span>
-                            <i className="fa-solid fa-trash" onClick={() => handleRemoveFavorite(favorite)}></i>
+                            <i className="fa fa-trash" onClick={() => handleRemoveFavorite(favorite)}></i>
                         </li>
                     ))}
                     {favorites.length === 0 && (

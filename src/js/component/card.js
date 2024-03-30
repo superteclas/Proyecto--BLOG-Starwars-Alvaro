@@ -29,7 +29,7 @@ export const Card = (props) => {
                 <p className="card-text">Eye-Color: {character.eyeColor}</p>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <button className="btn btn-link" onClick={handleAddToFavorites}>
-                        <i className="fa-regular fa-heart"></i>
+                        <i className="fa fa-heart"></i>
                     </button>
                     {/* Cambia el botón "Más info" por un enlace que te lleve a la vista Single */}
                     <Link to={`/single/`} className="btn btn-primary">Más info</Link>
