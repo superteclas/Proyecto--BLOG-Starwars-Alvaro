@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom"; // Importa Link desde react-router-dom
 import { Context } from "../store/appContext.js";
 
 export const Card = (props) => {
@@ -30,7 +31,8 @@ export const Card = (props) => {
                     <button className="btn btn-link" onClick={handleAddToFavorites}>
                         <i className="fa-regular fa-heart"></i>
                     </button>
-                    <a href="#" className="btn btn-primary">Más info</a>
+                    {/* Cambia el botón "Más info" por un enlace que te lleve a la vista Single */}
+                    <Link to={`/single/`} className="btn btn-primary">Más info</Link>
                 </div>
             </div>
         </div>
