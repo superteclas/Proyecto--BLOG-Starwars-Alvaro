@@ -1,26 +1,34 @@
-import React, { useState, useEffect, useContext } from "react";
-import PropTypes from "prop-types";
+import React, { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const Single = props => {
-	const { store, actions } = useContext(Context);
-	const params = useParams();
-	return (
-		<div className="jumbotron">
-			<h1 className="display-4">This will show the demo element: {store.demo[params.theid].title}</h1>
+export const Single = () => {
+    const { store } = useContext(Context);
+    const params = useParams(); // Utiliza useParams para obtener los parámetros de la URL
 
-			<hr className="my-4" />
+    // Encuentra el personaje correspondiente en la lista de personajes almacenados en el estado
+    const character = store.characters.find(character => character.uid === params.theid);
 
-			<Link to="/">
-				<span className="btn btn-primary btn-lg" href="#" role="button">
-					Back home
-				</span>
-			</Link>
-		</div>
-	);
-};
+    // Si el personaje no se encuentra, muestra un mensaje de error
+    if (!character) {
+        return <h1>Character not found</h1>;
+    }
 
-Single.propTypes = {
-	match: PropTypes.object
+    // Renderiza los detalles del personaje
+    return (
+        <div className="jumbotron">
+            <h1 className="display-4">{character.name}</h1>
+            <p className="lead">Gender: {character.gender}</p>
+            <p className="lead">Hair Color: {character.hairColor}</p>
+            <p className="lead">Eye-Color: {character.eyeColor}</p>
+
+            <hr className="my-4" />
+
+            <Link to="/">
+                <span className="btn btn-primary btn-lg" href="#" role="button">
+                    Back home
+                </span>
+            </Link>
+        </div>
+    );
 };
