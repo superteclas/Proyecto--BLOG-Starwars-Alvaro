@@ -50,7 +50,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 fetch(`https://www.swapi.tech/api/people/${id}`)
                     .then(res => res.json())
                     .then(data => {
-                        
+                        console.log("Character details:", data.result.properties); 
                         const characterDetails = data.result.properties || {};
                         setStore({
                             character: {
@@ -64,6 +64,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     })
                     .catch(error => console.log(error));
             }
+
             
             
         }
