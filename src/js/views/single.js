@@ -16,15 +16,18 @@ export const Single = () => {
 
     // Renderiza los detalles del personaje
     return (
+        
+        
         <div className="jumbotron">
-            <h1 className="display-4">{character.name}</h1>
-            <p className="lead">Gender: {character.gender}</p>
-            <p className="lead">Hair Color: {character.hairColor}</p>
-            <p className="lead">Eye-Color: {character.eyeColor}</p>
-
-            <hr className="my-4" />
-
-            
+        <div className="row align-items-center">
+            <div className="col-md-3">
+                <img src="https://starwars-visualguide.com/assets/img/characters/1.jpg" alt="luke" className="img-fluid" />
+            </div>
+            <div className="col-md-9">
+                <h1 className="display-4">{character.name}</h1>
+                <p className="lead">Descripción del personaje...</p>
+            </div>
         </div>
+    </div>
     );
 };
