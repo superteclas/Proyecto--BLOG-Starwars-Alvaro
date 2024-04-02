@@ -26,8 +26,8 @@ export const Card = (props) => {
                 <p className="card-text">Hair Color: {character.hairColor}</p>
                 <p className="card-text">Eye-Color: {character.eyeColor}</p>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <Link to={`/single/${props.id}`} className="btn btn-primary">Más info</Link>
-                    <button className="btn btn-link" onClick={handleAddToFavorites}>
+                    <Link to={`/single/${props.id}`} className="btn btn-danger">Más info</Link>
+                    <button className="btn btn-warning" onClick={handleAddToFavorites}>
                     <i className="fa fa-heart" style={{ color: 'red' }}></i>
                     </button>
                 </div>
