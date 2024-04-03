@@ -64,11 +64,11 @@ const getState = ({ getStore, getActions, setStore }) => {
                             character: {
                                 id: id,
                                 details: characterDetails,
-                                gender: characterDetails.gender || '',
-                                skinColor: characterDetails.skin_color || '',
-                                eyeColor: characterDetails.eye_color || '',
-                                birth: characterDetails.birth_year || '',
-                                height: characterDetails.height || '',
+                                gender: characterDetails.gender,
+                                skinColor: characterDetails.skin_color,
+                                eyeColor: characterDetails.eye_color,
+                                birth: characterDetails.birth_year,
+                                height: characterDetails.height,
                             }
                         });
                     })
@@ -112,7 +112,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                                 passengers: VehicleDetails.passengers || '',
                                 length :VehicleDetails.length || '',
                                 crew :VehicleDetails.crew || '',
-                                maxatmospherespeed:VehicleDetails.max_atmosphering_speed || '',
+                                maxAtmosphereSpeed:VehicleDetails.max_atmosphering_speed || '',
 
                                 
                             }
