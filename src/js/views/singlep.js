@@ -19,7 +19,7 @@ export const Singlep = () => {
         <div className="container">
             <div className="row">
                 <div className="col-md-6">
-                    <img src="https://static.wikia.nocookie.net/esstarwars/images/c/c9/Galaxymap3.jpg/revision/latest?cb=20210504230731" alt="luke" className="img-fluid custom-heightp" />
+                    <img src="https://static.wikia.nocookie.net/esstarwars/images/c/c9/Galaxymap3.jpg/revision/latest?cb=20210504230731" alt="luke" className="img-fluid custom-height" />
                 </div>
                 <div className="col-md-6">
                     <div className="jumbotron">
@@ -31,27 +31,27 @@ export const Singlep = () => {
             <div className="container text-center-footer" style={{ borderTop: "1px solid red" }}>
                 <div className="row align-items-start mt-2">
                     <div className="col-md-2 footer-single">
-                        <h6>{planet.name}</h6>
+                        <h6>Nombre</h6>
                         <p>{planet.name}</p>
                     </div>
                     <div className="col-md-2 footer-single">
-                        <h6>{planet.name}</h6>
+                        <h6>Clima</h6>
                         <p>{planet.name}</p>
                     </div>
                     <div className="col-md-2 footer-single">
-                        <h6>{planet.name}</h6>
+                        <h6>Habitantes</h6>
                         <p>{planet.name}</p>
                     </div>
                     <div className="col-md-2 footer-single">
-                        <h6>{planet.name}</h6>
+                        <h6>Periodo Orbital</h6>
                         <p>{planet.name}</p>
                     </div>
                     <div className="col-md-2 footer-single">
-                        <h6>{planet.name}</h6>
+                        <h6>Periodo de Rotación</h6>
                         <p>{planet.name}</p>
                     </div>
                     <div className="col-md-2 footer-single">
-                        <h6>{planet.name}</h6>
+                        <h6>Diametro</h6>
                         <p>{planet.name}</p>
                     </div>
                 </div>
