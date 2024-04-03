@@ -19,7 +19,7 @@ export const Singlep = () => {
         <div className="jumbotron">
             <div className="row">
                 <div className="col-md-6 image-container-single"> 
-                    <img src="https://static.wikia.nocookie.net/esstarwars/images/c/c9/Galaxymap3.jpg/revision/latest?cb=20210504230731" alt="luke" className="img-fluid img-single" />
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSSth0Lo9BZQzVOJW9Jyypco6pHK8k-Yvhs25JEx5lw&s" alt="luke" className="img-fluid img-single" />
                 </div>
                 <div className="col-md-6 image-text">
                     <h3 className="display text-white">{planet.name}</h3>
@@ -28,34 +28,7 @@ export const Singlep = () => {
                     Integer mi justo, ultricies quis commodo ut, interdum sed ligula. </p>
                 </div>
             </div>
-            <div className="container text-center-footer" style={{ borderTop: "1px solid red" }}> {/* Agregamos el estilo para el borde superior */}
-                <div className="row align-items-start mt-2">
-                    <div className="col-md-2 footer-single">
-                        <h6>{planet.name}</h6>
-                        <p>{character.name}</p>
-                    </div>
-                    <div className="col-md-2 footer-single">
-                        <h6>{character.name}</h6>
-                        <p>{character.name}</p>
-                    </div>
-                    <div className="col-md-2 footer-single">
-                        <h6>{character.name}</h6>
-                        <p>{character.name}</p>
-                    </div>
-                    <div className="col-md-2 footer-single">
-                        <h6>{character.name}</h6>
-                        <p>{character.name}</p>
-                    </div>
-                    <div className="col-md-2 footer-single">
-                        <h6>{character.name}</h6>
-                        <p>{character.name}</p>
-                    </div>
-                    <div className="col-md-2 footer-single">
-                        <h6>{character.name}</h6>
-                        <p>{character.name}</p>
-                    </div>
-                </div>
-            </div>
+          
         </div>
     );
 };
