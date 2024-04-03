@@ -28,7 +28,34 @@ export const Singlep = () => {
                     Integer mi justo, ultricies quis commodo ut, interdum sed ligula. </p>
                 </div>
             </div>
-          
+            <div className="container text-center-footer" style={{ borderTop: "1px solid red" }}> {/* Agregamos el estilo para el borde superior */}
+                <div className="row align-items-start mt-2">
+                    <div className="col-md-2 footer-single">
+                        <h6>{planet.name}</h6>
+                        <p>{planet.name}</p>
+                    </div>
+                    <div className="col-md-2 footer-single">
+                        <h6>{planet.name}</h6>
+                        <p>{planet.name}</p>
+                    </div>
+                    <div className="col-md-2 footer-single">
+                        <h6>{planet.name}</h6>
+                        <p>{planet.name}</p>
+                    </div>
+                    <div className="col-md-2 footer-single">
+                        <h6>{planet.name}</h6>
+                        <p>{planet.name}</p>
+                    </div>
+                    <div className="col-md-2 footer-single">
+                        <h6>{planet.name}</h6>
+                        <p>{planet.name}</p>
+                    </div>
+                    <div className="col-md-2 footer-single">
+                        <h6>{planet.name}</h6>
+                        <p>{planet.name}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
