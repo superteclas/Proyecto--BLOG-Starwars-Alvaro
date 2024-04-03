@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const SinglePlanetas = () => {
+export const Singlep = () => {
     const { store } = useContext(Context);
     const params = useParams(); // Utiliza useParams para obtener los parámetros de la URL
 
@@ -31,7 +31,7 @@ export const SinglePlanetas = () => {
             <div className="container text-center-footer" style={{ borderTop: "1px solid red" }}> {/* Agregamos el estilo para el borde superior */}
                 <div className="row align-items-start mt-2">
                     <div className="col-md-2 footer-single">
-                        <h6>{character.name}</h6>
+                        <h6>{planet.name}</h6>
                         <p>{character.name}</p>
                     </div>
                     <div className="col-md-2 footer-single">

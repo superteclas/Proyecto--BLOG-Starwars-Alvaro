@@ -24,7 +24,7 @@ export const Home = () => {
     return (
         <div>
             <div className="cards-section mb-4">
-                <h2 style={{ color: "red" }}>Characters</h2>
+                <h2 style={{ color: "red" }}>Personajes</h2>
                 <div className="cards-container">
                     <div className="row flex-nowrap overflow-auto">
                         {store.characters.map((character) => (
@@ -43,7 +43,7 @@ export const Home = () => {
             </div>
             <div>
                 <div className="cards-section mb-4">
-                    <h2 style={{ color: "red" }}>Planets</h2>
+                    <h2 style={{ color: "red" }}>Planetas</h2>
                     <div className="cards-container">
                         <div className="row flex-nowrap overflow-auto">
                             {store.planets.map((planet) => (

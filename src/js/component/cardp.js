@@ -30,7 +30,7 @@ export const CardPlanetas = (props) => {
                     </>
                 }
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <Link to={`/singleplanetas/${props.id}`} className="btn btn-danger">Más info</Link>
+                    <Link to={`/singlep/${props.id}`} className="btn btn-danger">Más info</Link>
                     <button className="btn btn-warning" onClick={handleAddToFavorites}>
                         <i className="fa fa-heart" style={{ color: 'red' }}></i>
                     </button>
