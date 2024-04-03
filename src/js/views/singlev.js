@@ -31,27 +31,27 @@ export const Singlev = () => {
             <div className="container text-center-footer" style={{ borderTop: "1px solid red" }}>
                 <div className="row align-items-start mt-2">
                     <div className="col-md-2 footer-single">
-                        <h6>{vehicle.name}</h6>
+                        <h6>Nombre</h6>
                         <p>{vehicle.name}</p>
                     </div>
                     <div className="col-md-2 footer-single">
-                        <h6>{vehicle.name}</h6>
+                        <h6>Clase</h6>
                         <p>{vehicle.name}</p>
                     </div>
                     <div className="col-md-2 footer-single">
-                        <h6>{vehicle.name}</h6>
+                        <h6>Pasajeros</h6>
                         <p>{vehicle.name}</p>
                     </div>
                     <div className="col-md-2 footer-single">
-                        <h6>{vehicle.name}</h6>
+                        <h6>Longitud</h6>
                         <p>{vehicle.name}</p>
                     </div>
                     <div className="col-md-2 footer-single">
-                        <h6>{vehicle.name}</h6>
+                        <h6>Crew</h6>
                         <p>{vehicle.name}</p>
                     </div>
                     <div className="col-md-2 footer-single">
-                        <h6>{vehicle.name}</h6>
+                        <h6>Velocidad Máxima</h6>
                         <p>{vehicle.name}</p>
                     </div>
                 </div>
