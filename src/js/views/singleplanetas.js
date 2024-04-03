@@ -19,7 +19,7 @@ export const Single = () => {
         <div className="jumbotron">
             <div className="row">
                 <div className="col-md-6 image-container-single"> 
-                    <img src="https://starwars-visualguide.com/assets/img/characters/1.jpg" alt="luke" className="img-fluid img-single" />
+                    <img src="https://static.wikia.nocookie.net/esstarwars/images/c/c9/Galaxymap3.jpg/revision/latest?cb=20210504230731" alt="luke" className="img-fluid img-single" />
                 </div>
                 <div className="col-md-6 image-text">
                     <h3 className="display text-white">{character.name}</h3>

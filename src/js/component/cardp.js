@@ -19,7 +19,7 @@ export const CardPlanetas = (props) => {
 
     return (
         <div className="card" style={{ width: "18rem" }}>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/2560px-Star_Wars_Logo.svg.png" className="card-img-top" alt="..." />
+            <img src="https://static.wikia.nocookie.net/esstarwars/images/c/c9/Galaxymap3.jpg/revision/latest?cb=20210504230731" className="card-img-top" alt="..." />
             <div className="card-body">
                 <h5 className="card-title">{props.name}</h5>
                 {/* Utiliza los detalles del planeta directamente */}
