@@ -110,8 +110,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                                 passengers: VehicleDetails.passengers || '',
                                 length :VehicleDetails.length || '',
                                 crew :VehicleDetails.crew || '',
-                                
-                                Maxatmospherespeed:VehicleDetails.max_atmosphering_speed || '',
+                                maxatmospherespeed:VehicleDetails.max_atmosphering_speed || '',
 
                                 
                             }
