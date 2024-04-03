@@ -3,8 +3,12 @@ body{
 }
 .image-container-single {
     margin-left: 8em;
-    width: 20em;
+    width: 40em;
+    height: 40em;
+    
+    
     margin-bottom: 2em; 
+    
     
 }
 
