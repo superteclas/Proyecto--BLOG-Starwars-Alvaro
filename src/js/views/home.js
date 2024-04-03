@@ -23,7 +23,7 @@ export const Home = () => {
 
     return (
         <div>
-            <div className="cards-section">
+            <div className="cards-section mb-4">
                 <h2 style={{ color: "red" }}>Characters</h2>
                 <div className="cards-container">
                     <div className="row flex-nowrap overflow-auto">
@@ -32,6 +32,8 @@ export const Home = () => {
                                 <Card
                                     name={character.name}
                                     gender={character.gender}
+                                    skinColor={character.skin_color}
+                                    eyeColor={character.eye_color}
                                     id={character.uid}
                                 />
                             </div>
@@ -40,7 +42,7 @@ export const Home = () => {
                 </div>
             </div>
             <div>
-                <div className="cards-section">
+                <div className="cards-section mb-4">
                     <h2 style={{ color: "red" }}>Planets</h2>
                     <div className="cards-container">
                         <div className="row flex-nowrap overflow-auto">

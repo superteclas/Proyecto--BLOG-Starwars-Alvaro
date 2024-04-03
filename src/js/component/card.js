@@ -23,8 +23,8 @@ export const Card = (props) => {
             <div className="card-body">
                 <h5 className="card-title">{props.name}</h5>
                 <p className="card-text">Gender: {character.gender}</p>
-                <p className="card-text">Hair Color: {character.hairColor}</p>
-                <p className="card-text">Eye-Color: {character.eyeColor}</p>
+                <p className="card-text">Skin Color: {character.skin_color}</p>
+                <p className="card-text">Eye-Color: {character.eye_color}</p>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <Link to={`/single/${props.id}`} className="btn btn-danger">Más info</Link>
                     <button className="btn btn-warning" onClick={handleAddToFavorites}>

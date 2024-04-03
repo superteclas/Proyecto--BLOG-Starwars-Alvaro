@@ -65,8 +65,10 @@ const getState = ({ getStore, getActions, setStore }) => {
                                 id: id,
                                 details: characterDetails,
                                 gender: characterDetails.gender || '',
-                                hairColor: characterDetails.hair_color || '',
-                                eyeColor: characterDetails.eye_color || ''
+                                skinColor: characterDetails.skin_color || '',
+                                eyeColor: characterDetails.eye_color || '',
+                                birth: characterDetails.birth_year || '',
+                                height: characterDetails.height || '',
                             }
                         });
                     })
