@@ -22,7 +22,7 @@ export const CardPlanetas = (props) => {
             <img src="https://static.wikia.nocookie.net/esstarwars/images/c/c9/Galaxymap3.jpg/revision/latest?cb=20210504230731" className="card-img-top" alt="..." />
             <div className="card-body">
                 <h5 className="card-title">{props.name}</h5>
-                {/* Utiliza los detalles del planeta directamente */}
+                
                 {planet &&
                     <>
                         <p className="card-text">Habitantes: {planet.population}</p>

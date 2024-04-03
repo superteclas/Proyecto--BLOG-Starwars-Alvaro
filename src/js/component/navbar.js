@@ -5,10 +5,10 @@ import { Context } from "../store/appContext";
 export const Navbar = () => {
     const { store, actions } = useContext(Context);
     const { favorites } = store;
-    const [dropdownOpen, setDropdownOpen] = useState(false); // Estado para controlar la apertura/cierre del desplegable
+    const [dropdownOpen, setDropdownOpen] = useState(false); 
 
     const handleRemoveFavorite = (favoriteName, event) => {
-        event.stopPropagation(); // Detiene la propagación del evento de clic
+        event.stopPropagation(); 
         actions.removeItem(favoriteName);
     };
 

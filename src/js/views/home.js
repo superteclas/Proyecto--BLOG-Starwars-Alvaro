@@ -11,15 +11,11 @@ export const Home = () => {
 
     useEffect(() => {
         actions.getAllCharacters();
+        actions.getAllPlanets();
+        actions.getAllVehicles();
     }, []);
 
-    useEffect(() => {
-        actions.getAllPlanets();
-    }, []); 
-
-    useEffect(() => {
-        actions.getAllVehicles();
-    }, []); 
+   
 
     return (
         <div>
