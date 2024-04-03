@@ -25,12 +25,9 @@ export const CardPlanetas = (props) => {
             <div className="card-body">
                 <h5 className="card-title">{props.name}</h5>
                 
-                {planet &&
-                    <>
-                        <p className="card-text">Habitantes: {planet.population}</p>
-                        <p className="card-text">Superficie: {planet.terrain}</p>
-                    </>
-                }
+                <p className="card-text">Habitantes: {planet ? planet.population : 'No disponible'}</p>
+                <p className="card-text">Superficie: {planet ? planet.terrain : 'No disponible'}</p>
+
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <Link to={`/singlep/${props.id}`} className="btn btn-danger">Más info</Link>
                     <button className="btn btn-warning" onClick={handleAddToFavorites}>

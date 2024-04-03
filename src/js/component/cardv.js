@@ -25,12 +25,9 @@ export const CardVehicles = (props) => {
             <div className="card-body">
                 <h5 className="card-title">{props.name}</h5>
                
-                {vehicle &&
-                    <>
-                        <p className="card-text">Tripulacion: {vehicle.crew}</p>
-                        <p className="card-text">Modelo: {vehicle.model}</p>
-                    </>
-                }
+                <p className="card-text">Tripulacion: {vehicle ? vehicle.crew : 'No disponible'}</p>
+                <p className="card-text">Modelo: {vehicle ? vehicle.model : 'No disponible'}</p>
+
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <Link to={`/singlev/${props.id}`} className="btn btn-danger">Más info</Link>
                     <button className="btn btn-warning" onClick={handleAddToFavorites}>

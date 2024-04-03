@@ -17,7 +17,7 @@ export const Singlev = () => {
     // Renderiza los detalles del vehículo
     return (
         <div className="container">
-            <div className="row">
+            <div className="row mb-4">
                 <div className="col-md-6">
                     <img src="https://s1.elespanol.com/2023/09/13/actualidad/794181310_236024913_1706x960.jpg" alt="luke" className="img-fluid custom-height" />
                 </div>

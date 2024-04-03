@@ -19,7 +19,7 @@ export const Singlep = () => {
         <div className="container">
             <div className="row">
                 <div className="col-md-6">
-                    <img src="https://static.wikia.nocookie.net/esstarwars/images/c/c9/Galaxymap3.jpg/revision/latest?cb=20210504230731" alt="luke" className="img-fluid custom-height" />
+                    <img src="https://static.wikia.nocookie.net/esstarwars/images/c/c9/Galaxymap3.jpg/revision/latest?cb=20210504230731" alt="luke" className="img-fluid custom-heightp" />
                 </div>
                 <div className="col-md-6">
                     <div className="jumbotron">
