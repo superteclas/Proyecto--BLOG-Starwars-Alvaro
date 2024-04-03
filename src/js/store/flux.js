@@ -104,7 +104,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                         console.log("vehicle details:", data.result.properties); 
                         const VehicleDetails = data.result.properties || {};
                         setStore({
-                            planet: {
+                            vehicle: {
                                 id: id,
                                 details: VehicleDetails,
                                 model: VehicleDetails.model || '',
