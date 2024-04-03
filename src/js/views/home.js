@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext.js";
 import { Card } from "../component/card.js";
+import { CardPlanetas } from "../component/cardPlanetas.js";
+// Asegúrate de importar también CardPlanetas
 import "../../styles/home.css";
 
 export const Home = () => {
@@ -9,6 +11,10 @@ export const Home = () => {
     useEffect(() => {
         actions.getAllCharacters();
     }, []);
+
+    useEffect(() => {
+        actions.getAllPlanets();
+    }, []); // Agrega un useEffect adicional para cargar los planetas cuando se monta el componente
 
     return (
         <div>
@@ -25,6 +31,25 @@ export const Home = () => {
                                 />
                             </div>
                         ))}
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div className="cards-section">
+                    <h2 style={{ color: "red" }}>Planets</h2>
+                    <div className="cards-container">
+                        <div className="row flex-nowrap overflow-auto">
+                            {store.planets.map((planet) => (
+                                <div className="col" key={planet.uid}>
+                                    <CardPlanetas
+                                        name={planet.name}
+                                        population={planet.population}
+                                        terrain={planet.terrain}
+                                        id={planet.uid}
+                                    />
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>

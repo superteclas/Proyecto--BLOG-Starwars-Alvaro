@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext.js";
 
-export const Card = (props) => {
+export const CardPlanetas = (props) => {
     const { store, actions } = useContext(Context);
-    const { character } = store;
+    const { planet } = store;
 
     useEffect(() => {
         if (props.id) {
-            actions.getCharacterDetails(props.id);
+            actions.getPlanetDetails(props.id);
         }
     }, [props.id]);
 
@@ -22,13 +22,17 @@ export const Card = (props) => {
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/2560px-Star_Wars_Logo.svg.png" className="card-img-top" alt="..." />
             <div className="card-body">
                 <h5 className="card-title">{props.name}</h5>
-                <p className="card-text">Gender: {character.gender}</p>
-                <p className="card-text">Hair Color: {character.hairColor}</p>
-                <p className="card-text">Eye-Color: {character.eyeColor}</p>
+                {/* Utiliza los detalles del planeta directamente */}
+                {planet &&
+                    <>
+                        <p className="card-text">Population: {planet.population}</p>
+                        <p className="card-text">Terrain: {planet.terrain}</p>
+                    </>
+                }
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <Link to={`/single/${props.id}`} className="btn btn-danger">Más info</Link>
+                    <Link to={`/singleplanetas/${props.id}`} className="btn btn-danger">Más info</Link>
                     <button className="btn btn-warning" onClick={handleAddToFavorites}>
-                    <i className="fa fa-heart" style={{ color: 'red' }}></i>
+                        <i className="fa fa-heart" style={{ color: 'red' }}></i>
                     </button>
                 </div>
             </div>
@@ -36,9 +40,9 @@ export const Card = (props) => {
     );
 };
 
-Card.propTypes = {
+CardPlanetas.propTypes = {
     name: PropTypes.string,
     id: PropTypes.string,
 };
 
-export default Card;
+export default CardPlanetas;
