@@ -6,6 +6,7 @@ import { Context } from "../store/appContext.js";
 export const Card = ({ id, name }) => {
     const { store, actions } = useContext(Context);
     const { character } = store;
+    const [isFavorite, setIsFavorite] = useState(false); // Estado local para controlar si el personaje es favorito o no
 
     useEffect(() => {
         if (id) {
@@ -15,6 +16,7 @@ export const Card = ({ id, name }) => {
 
     const handleAddToFavorites = () => {
         actions.addItem(name);
+        setIsFavorite(true); // Cuando se hace clic en el botón, establece el estado de favorito en verdadero
     };
 
     return (
@@ -28,7 +30,7 @@ export const Card = ({ id, name }) => {
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <Link to={`/single/${id}`} className="btn btn-danger">Más info</Link>
                     <button className="btn btn-warning" onClick={handleAddToFavorites}>
-                        <i className="fa fa-heart" style={{ color: 'red' }}></i>
+                        <i className="fa fa-heart" style={{ color: isFavorite ? 'red' : 'white' }}></i>
                     </button>
                 </div>
             </div>

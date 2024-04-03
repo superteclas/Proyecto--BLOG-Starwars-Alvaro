@@ -66,7 +66,7 @@ export const Home = () => {
                                 <CardVehicles
                                     crew={vehicle.crew}
                                     model={vehicle.model}
-                                    
+                                    name={vehicle.name}
                                     id={vehicle.uid}
                                 />
                             </div>

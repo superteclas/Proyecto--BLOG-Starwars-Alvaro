@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext.js";
@@ -6,6 +6,7 @@ import { Context } from "../store/appContext.js";
 export const CardPlanetas = (props) => {
     const { store, actions } = useContext(Context);
     const { planet } = store;
+    const [isFavorite, setIsFavorite] = useState(false); // Estado local para controlar si el planeta es favorito o no
 
     useEffect(() => {
         if (props.id) {
@@ -15,6 +16,7 @@ export const CardPlanetas = (props) => {
 
     const handleAddToFavorites = () => {
         actions.addItem(props.name);
+        setIsFavorite(true); // Cuando se hace clic en el botón, establece el estado de favorito en verdadero
     };
 
     return (
@@ -32,7 +34,8 @@ export const CardPlanetas = (props) => {
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <Link to={`/singlep/${props.id}`} className="btn btn-danger">Más info</Link>
                     <button className="btn btn-warning" onClick={handleAddToFavorites}>
-                        <i className="fa fa-heart" style={{ color: 'red' }}></i>
+                        {/* Cambia el color del corazón según si el planeta es favorito o no */}
+                        <i className="fa fa-heart" style={{ color: isFavorite ? 'red' : 'white' }}></i>
                     </button>
                 </div>
             </div>
