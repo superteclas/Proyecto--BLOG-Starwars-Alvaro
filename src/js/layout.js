@@ -10,6 +10,7 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Singlev } from "./views/singlev";
 
 
 const Layout = () => {
@@ -25,7 +26,7 @@ const Layout = () => {
                         <Route path="/demo" element={<Demo />} />
                         <Route path="/single/:theid" element={<Single />} />
                         <Route path="/singlep/:theid" element={<Singlep />} /> 
-                        <Route path="/singlev/:theid" element={<Single />} />
+                        <Route path="/singlev/:theid" element={<Singlev />} />
                         <Route path="*" element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />

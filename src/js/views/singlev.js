@@ -11,7 +11,7 @@ export const Singlev = () => {
 
     // Si el personaje no se encuentra, muestra un mensaje de error
     if (!vehicle) {
-        return <h1>Character not found</h1>;
+        return <h1>Vehicle</h1>;
     }
 
     // Renderiza los detalles del personaje

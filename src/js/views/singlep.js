@@ -11,7 +11,7 @@ export const Singlep = () => {
 
     // Si el personaje no se encuentra, muestra un mensaje de error
     if (!planet) {
-        return <h1>Character not found</h1>;
+        return <h1>planet not found</h1>;
     }
 
     // Renderiza los detalles del personaje
