@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext.js";
 import { Card } from "../component/card.js";
 import { CardPlanetas } from "../component/cardPlanetas.js";
-// Asegúrate de importar también CardPlanetas
 import "../../styles/home.css";
 
 export const Home = () => {
@@ -14,7 +13,7 @@ export const Home = () => {
 
     useEffect(() => {
         actions.getAllPlanets();
-    }, []); // Agrega un useEffect adicional para cargar los planetas cuando se monta el componente
+    }, []); 
 
     return (
         <div>
