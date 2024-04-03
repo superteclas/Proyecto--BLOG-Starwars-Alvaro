@@ -25,8 +25,8 @@ export const CardPlanetas = (props) => {
                 {/* Utiliza los detalles del planeta directamente */}
                 {planet &&
                     <>
-                        <p className="card-text">Population: {planet.population}</p>
-                        <p className="card-text">Terrain: {planet.terrain}</p>
+                        <p className="card-text">Habitantes: {planet.population}</p>
+                        <p className="card-text">Superficie: {planet.terrain}</p>
                     </>
                 }
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>

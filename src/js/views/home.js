@@ -68,7 +68,7 @@ export const Home = () => {
                         {store.vehicles.map((vehicle) => (
                             <div className="col" key={vehicle.uid}>
                                 <CardVehicles
-                                    name={vehicle.name}
+                                    crew={vehicle.crew}
                                     model={vehicle.model}
                                     
                                     id={vehicle.uid}

@@ -22,9 +22,9 @@ export const Card = ({ id, name }) => {
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSSth0Lo9BZQzVOJW9Jyypco6pHK8k-Yvhs25JEx5lw&s" className="card-img-top" alt="..." />
             <div className="card-body">
                 <h5 className="card-title">{name}</h5>
-                <p className="card-text">Gender: {character.gender}</p>
-                <p className="card-text">Skin-Color: {character.skinColor}</p>
-                <p className="card-text">Eye-Color: {character.eyeColor}</p>
+                <p className="card-text">Genero: {character.gender}</p>
+                <p className="card-text">Color de Piel: {character.skinColor}</p>
+                <p className="card-text">Color de Ojos: {character.eyeColor}</p>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <Link to={`/single/${id}`} className="btn btn-danger">Más info</Link>
                     <button className="btn btn-warning" onClick={handleAddToFavorites}>

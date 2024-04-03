@@ -26,7 +26,7 @@ export const CardVehicles = (props) => {
                 {vehicle &&
                     <>
                         <p className="card-text">Tripulacion: {vehicle.crew}</p>
-                        <p className="card-text">Velocidad: {vehicle.maxAtmosphereSpeed}</p>
+                        <p className="card-text">Modelo: {vehicle.model}</p>
                     </>
                 }
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
