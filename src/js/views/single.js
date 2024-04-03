@@ -28,28 +28,29 @@ export const Single = () => {
             </div>
             <div className="container text-center-footer" style={{ borderTop: "1px solid red" }}>
                 <div className="row align-items-start mt-2">
-                    <div className="col-md-2 footer-single">
-                        <h6>{character.name}</h6>
-                            <p>{character.name}</p>
-                    </div>
+                   
                 <div className="col-md-2 footer-single">
-                    <h6>{character.name}</h6>
+                    <h6>Nombre</h6>
                     <p>{character.name}</p>
                 </div>
                 <div className="col-md-2 footer-single">
-                    <h6>{character.name}</h6>
+                    <h6>Año Nacimiento</h6>
                     <p>{character.name}</p>
                 </div>
                 <div className="col-md-2 footer-single">
-                    <h6>{character.name}</h6>
+                    <h6>Genero</h6>
                     <p>{character.name}</p>
                 </div>
                 <div className="col-md-2 footer-single">
-                    <h6>{character.name}</h6>
+                    <h6>Estatura</h6>
                     <p>{character.name}</p>
                 </div>
                 <div className="col-md-2 footer-single">
-                    <h6>{character.name}</h6>
+                    <h6>Color de Piel</h6>
+                    <p>{character.name}</p>
+                </div>
+                <div className="col-md-2 footer-single">
+                    <h6>Color de ojos</h6>
                     <p>{character.name}</p>
                 </div>
             </div>
