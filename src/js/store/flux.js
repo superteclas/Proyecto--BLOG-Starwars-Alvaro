@@ -14,6 +14,10 @@ const getState = ({ getStore, getActions, setStore }) => {
                 id: null, 
                 details: {} 
             },
+            vehicle:{
+                id: null, 
+                details: {} 
+            },
             favorites: []
         },
         actions: {
@@ -85,6 +89,31 @@ const getState = ({ getStore, getActions, setStore }) => {
                                 terrain: PlanetDetails.terrain || '',
                                 diameter: PlanetDetails.diameter || '',
                                 rotarionPeriod: PlanetDetails.rotation_period || ''
+                            }
+                        });
+                    })
+                    .catch(error => console.log(error));
+            },
+
+            getVehicleDetails: (id) => {
+                fetch(`https://www.swapi.tech/api/vehicles/${id}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log("vehicle details:", data.result.properties); 
+                        const VehicleDetails = data.result.properties || {};
+                        setStore({
+                            planet: {
+                                id: id,
+                                details: VehicleDetails,
+                                model: VehicleDetails.model || '',
+                                class: VehicleDetails.class || '',
+                                passengers: VehicleDetails.passengers || '',
+                                length :VehicleDetails.length || '',
+                                crew :VehicleDetails.crew || '',
+                                
+                                Maxatmospherespeed:VehicleDetails.max_atmosphering_speed || '',
+
+                                
                             }
                         });
                     })
