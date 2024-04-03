@@ -1,4 +1,4 @@
-// En el archivo getState.js
+
 
 const getState = ({ getStore, getActions, setStore }) => {
     return {
@@ -7,8 +7,8 @@ const getState = ({ getStore, getActions, setStore }) => {
             planets: [],
             vehicles: [],
             character: {
-                id: null, // Agregar una clave para almacenar la ID del personaje seleccionado
-                details: {} // Agregar una clave para almacenar los detalles del personaje seleccionado
+                id: null, 
+                details: {} 
             },
             favorites: []
         },
@@ -16,7 +16,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             
             addItem: item => {
                 const store = getStore();
-                setStore({ favorites: [...store.favorites, item] }); // Elimina el objeto { item }
+                setStore({ favorites: [...store.favorites, item] }); 
             },
 
 			removeItem: itemName => {
