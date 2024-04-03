@@ -6,7 +6,7 @@ import { Context } from "../store/appContext.js";
 export const Card = ({ id, name }) => {
     const { store, actions } = useContext(Context);
     const { character } = store;
-    const [isFavorite, setIsFavorite] = useState(false); // Estado local para controlar si el personaje es favorito o no
+    const [isFavorite, setIsFavorite] = useState(false); 
 
     useEffect(() => {
         if (id) {
@@ -16,7 +16,7 @@ export const Card = ({ id, name }) => {
 
     const handleAddToFavorites = () => {
         actions.addItem(name);
-        setIsFavorite(true); // Cuando se hace clic en el botón, establece el estado de favorito en verdadero
+        setIsFavorite(true); 
     };
 
     return (

@@ -6,7 +6,7 @@ import { Context } from "../store/appContext.js";
 export const CardVehicles = (props) => {
     const { store, actions } = useContext(Context);
     const { vehicle } = store;
-    const [isFavorite, setIsFavorite] = useState(false); // Estado local para controlar si el vehículo es favorito o no
+    const [isFavorite, setIsFavorite] = useState(false); 
 
     useEffect(() => {
         if (props.id) {
@@ -16,7 +16,7 @@ export const CardVehicles = (props) => {
 
     const handleAddToFavorites = () => {
         actions.addItem(props.name);
-        setIsFavorite(true); // Cuando se hace clic en el botón, establece el estado de favorito en verdadero
+        setIsFavorite(true); 
     };
 
     return (
@@ -31,7 +31,6 @@ export const CardVehicles = (props) => {
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <Link to={`/singlev/${props.id}`} className="btn btn-danger">Más info</Link>
                     <button className="btn btn-warning" onClick={handleAddToFavorites}>
-                        {/* Cambia el color del corazón según si el vehículo es favorito o no */}
                         <i className="fa fa-heart" style={{ color: isFavorite ? 'red' : 'white' }}></i>
                     </button>
                 </div>
