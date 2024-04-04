@@ -28,7 +28,7 @@ export const Singlev = () => {
                     </div>
                 </div>
             </div>
-            <div className="container text-center-footer" style={{ borderTop: "1px solid red" }}>
+            <div className="container text-center-footer" style={{ borderTop: "1px solid white" }}>
                 <div className="row align-items-start mt-2">
                     <div className="col-md-2 footer-single">
                         <h6>Nombre</h6>
