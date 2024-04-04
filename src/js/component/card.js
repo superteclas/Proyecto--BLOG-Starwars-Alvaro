@@ -18,13 +18,14 @@ export const Card = ({ id, name, }) => {
         actions.addItem(name);
         setIsFavorite(true); 
     };
-
+    console.log("buscando que dibuje el genero" + character.skinColor);
     return (
         <div className="card" style={{ width: "18rem" }}>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSSth0Lo9BZQzVOJW9Jyypco6pHK8k-Yvhs25JEx5lw&s" className="card-img-top" alt="..." />
             <div className="card-body">
                 <h5 className="card-title">{name}</h5>
                 <p className="card-text">Genero: {character.gender}</p>
+                
                 <p className="card-text">Color de Piel: {character.skinColor}</p>
                 <p className="card-text">Color de Ojos: {character.eyeColor}</p>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -35,6 +36,7 @@ export const Card = ({ id, name, }) => {
                 </div>
             </div>
         </div>
+        
     );
 };
 

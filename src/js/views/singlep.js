@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import {useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Singlep = () => {
@@ -7,10 +7,11 @@ export const Singlep = () => {
     const params = useParams(); // Utiliza useParams para obtener los parámetros de la URL
 
     // Encuentra el planeta correspondiente en la lista de planetas almacenados en el estado
-    const planet = store.planets.find(planet => planet.uid === params.theid);
+    const planetDetails = store.planet.details;
+    console.log(planetDetails);
 
     // Si el planeta no se encuentra, muestra un mensaje de error
-    if (!planet) {
+    if (!planetDetails) {
         return <h1>Planet not found</h1>;
     }
 
@@ -23,7 +24,7 @@ export const Singlep = () => {
                 </div>
                 <div className="col-md-6">
                     <div className="jumbotron">
-                        <h3 className="display text-white">{planet.name}</h3>
+                        <h3 className="display text-white">{planetDetails.name}</h3>
                         <p className="lead text-white">Las características de los carácteres, planetas y vehículos son genéricos, al igual que las imágenes porque la API no proporciona imágenes.</p>
                     </div>
                 </div>
@@ -32,27 +33,27 @@ export const Singlep = () => {
                 <div className="row align-items-start mt-2">
                     <div className="col-md-2 footer-single">
                         <h6>Nombre</h6>
-                        <p>{planet.name}</p>
+                        <p>{planetDetails.name}</p>
                     </div>
                     <div className="col-md-2 footer-single">
                         <h6>Clima</h6>
-                        <p>{planet.name}</p>
+                        <p>{planetDetails.climate}</p>
                     </div>
                     <div className="col-md-2 footer-single">
                         <h6>Habitantes</h6>
-                        <p>{planet.name}</p>
+                        <p>{planetDetails.population}</p>
                     </div>
                     <div className="col-md-2 footer-single">
-                        <h6>Periodo Orbital</h6>
-                        <p>{planet.name}</p>
+                        <h6>Superficie</h6>
+                        <p>{planetDetails.terrain}</p>
                     </div>
                     <div className="col-md-2 footer-single">
                         <h6>Periodo de Rotación</h6>
-                        <p>{planet.name}</p>
+                        <p>{planetDetails.rotation_period}</p>
                     </div>
                     <div className="col-md-2 footer-single">
                         <h6>Diametro</h6>
-                        <p>{planet.name}</p>
+                        <p>{planetDetails.diameter}</p>
                     </div>
                 </div>
             </div>
