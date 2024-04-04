@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext.js";
 
-export const Card = ({ id, name }) => {
+export const Card = ({ id, name, }) => {
     const { store, actions } = useContext(Context);
     const { character } = store;
     const [isFavorite, setIsFavorite] = useState(false); 
