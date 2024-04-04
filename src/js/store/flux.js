@@ -106,9 +106,11 @@ const getState = ({ getStore, getActions, setStore }) => {
                         setStore({
                             vehicle: {
                                 id: id,
+                                cost: VehicleDetails.cost_in_credits,
+                                manufactured:VehicleDetails.manufacturer,
                                 details: VehicleDetails,
                                 model: VehicleDetails.model || '',
-                                class: VehicleDetails.class || '',
+                                class: VehicleDetails.vehicle_class || '',
                                 passengers: VehicleDetails.passengers || '',
                                 length :VehicleDetails.length || '',
                                 crew :VehicleDetails.crew || '',

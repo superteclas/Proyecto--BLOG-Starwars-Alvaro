@@ -9,7 +9,7 @@ export const Single = () => {
    
     
     const characterDetails = store.character.details;
-    console.log(characterDetails);
+    
    
     if (!characterDetails) {
         return <h1>Character not found</h1>;
@@ -24,7 +24,7 @@ export const Single = () => {
                 <div className="col-md-6">
                     <div className="jumbotron">
                         <h3 className="display text-white">{characterDetails.name}</h3>
-                        <p className="lead text-white">Las características de los personajes, planetas y vehículos son genéricos, al igual que las imágenes porque la API no proporciona imágenes</p>
+                        <p className="lead text-white">Las características de los personajes, planetas y vehículos en las cards son genéricos, al igual que las imágenes porque la API no proporciona imágenes</p>
                     </div>
                 </div>
             </div>

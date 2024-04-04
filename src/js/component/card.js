@@ -10,7 +10,7 @@ export const Card = ({ id, name, }) => {
 
     useEffect(() => {
         if (id) {
-            actions.getCharacterDetails(id);
+            actions.getCharacterDetails(id,);
         }
     }, [id]);
 

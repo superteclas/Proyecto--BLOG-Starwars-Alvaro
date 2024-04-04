@@ -4,18 +4,18 @@ import { Context } from "../store/appContext";
 
 export const Singlep = () => {
     const { store } = useContext(Context);
-    const params = useParams(); // Utiliza useParams para obtener los parámetros de la URL
+    const params = useParams(); 
 
-    // Encuentra el planeta correspondiente en la lista de planetas almacenados en el estado
+   
     const planetDetails = store.planet.details;
     console.log(planetDetails);
 
-    // Si el planeta no se encuentra, muestra un mensaje de error
+    
     if (!planetDetails) {
         return <h1>Planet not found</h1>;
     }
 
-    // Renderiza los detalles del planeta
+   
     return (
         <div className="container">
             <div className="row">
@@ -25,7 +25,7 @@ export const Singlep = () => {
                 <div className="col-md-6">
                     <div className="jumbotron">
                         <h3 className="display text-white">{planetDetails.name}</h3>
-                        <p className="lead text-white">Las características de los carácteres, planetas y vehículos son genéricos, al igual que las imágenes porque la API no proporciona imágenes.</p>
+                        <p className="lead text-white">Las características de los carácteres, planetas y vehículos en las cards son genéricos, al igual que las imágenes porque la API no proporciona imágenes.</p>
                     </div>
                 </div>
             </div>
