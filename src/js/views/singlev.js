@@ -24,7 +24,7 @@ export const Singlev = () => {
                 <div className="col-md-6">
                     <div className="jumbotron">
                         <h3 className="display text-white">{vehicle.name}</h3>
-                        <p className="lead text-white">Sed imperdiet molestie sem vitae semper. Maecenas condimentum mattis hendrerit. Sed ultrices ante nisi, eu lobortis leo dictum vel. Mauris vel enim condimentum justo hendrerit placerat eget et erat. Integer mi justo, ultricies quis commodo ut, interdum sed ligula.</p>
+                        <p className="lead text-white">Las características de los carácteres, planetas y vehículos son genéricos, al igual que las imágenes porque la API no proporciona imágenes.</p>
                     </div>
                 </div>
             </div>

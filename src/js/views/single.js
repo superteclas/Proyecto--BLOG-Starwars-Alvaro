@@ -1,15 +1,16 @@
 import React, { useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Single = () => {
     const { store } = useContext(Context);
-    const params = useParams(); 
-
-    const character = store.characters.find(character => character.uid === params.theid);
-
+    const params = useParams();
+   
     
-    if (!character) {
+    const characterDetails = store.character.details;
+    console.log(characterDetails);
+   
+    if (!characterDetails) {
         return <h1>Character not found</h1>;
     }
 
@@ -21,40 +22,39 @@ export const Single = () => {
                 </div>
                 <div className="col-md-6">
                     <div className="jumbotron">
-                        <h3 className="display text-white">{character.name}</h3>
-                        <p className="lead text-white">Sed imperdiet molestie sem vitae semper. Maecenas condimentum mattis hendrerit. Sed ultrices ante nisi, eu lobortis leo dictum vel. Mauris vel enim condimentum justo hendrerit placerat eget et erat. Integer mi justo, ultricies quis commodo ut, interdum sed ligula.</p>
+                        <h3 className="display text-white">{characterDetails.name}</h3>
+                        <p className="lead text-white">Las características de los personajes, planetas y vehículos son genéricos, al igual que las imágenes porque la API no proporciona imágenes</p>
                     </div>
                 </div>
             </div>
             <div className="container text-center-footer" style={{ borderTop: "1px solid red" }}>
                 <div className="row align-items-start mt-2">
-                   
-                <div className="col-md-2 footer-single">
-                    <h6>Nombre</h6>
-                    <p>{character.name}</p>
-                </div>
-                <div className="col-md-2 footer-single">
-                    <h6>Año Nacimiento</h6>
-                    <p>{character.name}</p>
-                </div>
-                <div className="col-md-2 footer-single">
-                    <h6>Genero</h6>
-                    <p>{character.name}</p>
-                </div>
-                <div className="col-md-2 footer-single">
-                    <h6>Estatura</h6>
-                    <p>{character.name}</p>
-                </div>
-                <div className="col-md-2 footer-single">
-                    <h6>Color de Piel</h6>
-                    <p>{character.name}</p>
-                </div>
-                <div className="col-md-2 footer-single">
-                    <h6>Color de ojos</h6>
-                    <p>{character.name}</p>
+                    <div className="col-md-2 footer-single">
+                        <h6>Nombre</h6>
+                        <p>{characterDetails.name}</p>
+                    </div>
+                    <div className="col-md-2 footer-single">
+                        <h6>Año Nacimiento</h6>
+                        <p>{characterDetails.birth_year}</p>
+                    </div>
+                    <div className="col-md-2 footer-single">
+                        <h6>Genero</h6>
+                        <p>{characterDetails.gender}</p>
+                    </div>
+                    <div className="col-md-2 footer-single">
+                        <h6>Estatura</h6>
+                        <p>{characterDetails.height}</p>
+                    </div>
+                    <div className="col-md-2 footer-single">
+                        <h6>Color de Piel</h6>
+                        <p>{characterDetails.skin_color}</p>
+                    </div>
+                    <div className="col-md-2 footer-single">
+                        <h6>Color de ojos</h6>
+                        <p>{characterDetails.eye_color}</p>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
     );
 };
