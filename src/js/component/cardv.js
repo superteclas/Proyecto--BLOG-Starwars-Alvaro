@@ -29,7 +29,7 @@ export const CardVehicles = (props) => {
                 <p className="card-text">Modelo: { vehicle.model}</p>
 
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <Link to={`/singlev/${props.id}`} className="btn btn-danger">Más info</Link>
+                    <Link to={`/singlev/${props.id}`} className="btn btn-custom">Más info</Link>
                     <button className="btn btn-warning" onClick={handleAddToFavorites}>
                         <i className="fa fa-heart" style={{ color: isFavorite ? 'red' : 'white' }}></i>
                     </button>

@@ -24,7 +24,7 @@ export const Navbar = () => {
 </Link>
 
             <div className="dropdown ml-auto" style={{ marginRight: '5em' }}> 
-                <a className="btn btn-danger dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" onClick={toggleDropdown}>
+                <a className="btn btn-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" onClick={toggleDropdown}>
                     Favoritos ({favorites.length})
                 </a>
                 <ul className={"dropdown-menu" + (dropdownOpen ? " show" : "")} onClick={(e) => e.stopPropagation()}> 
