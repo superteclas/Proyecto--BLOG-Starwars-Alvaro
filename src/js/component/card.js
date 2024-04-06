@@ -21,7 +21,7 @@ export const Card = ({ id, name, }) => {
     console.log("buscando que dibuje el genero" + character.skinColor);
     return (
         <div className="card" style={{ width: "18rem" }}>
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSSth0Lo9BZQzVOJW9Jyypco6pHK8k-Yvhs25JEx5lw&s" className="card-img-top" alt="..." />
+            <img src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} className="card-img-top" alt="..." />
             <div className="card-body">
                 <h5 className="card-title">{name}</h5>
                 <p className="card-text">Genero: {character.gender}</p>
