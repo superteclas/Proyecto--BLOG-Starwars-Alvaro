@@ -18,7 +18,7 @@ export const Card = ({ id, name, }) => {
         actions.addItem(name);
         setIsFavorite(true); 
     };
-    console.log("buscando que dibuje el genero" + character.skinColor);
+    console.log("buscando que dibuje el genero" + character.gender);
     return (
         <div className="card" style={{ width: "18rem" }}>
             <img src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} className="card-img-top" alt="..." />

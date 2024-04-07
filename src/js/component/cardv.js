@@ -3,33 +3,33 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext.js";
 
-export const CardVehicles = (props) => {
+export const CardVehicles = ({ id, name }) => {
     const { store, actions } = useContext(Context);
     const { vehicle } = store;
     const [isFavorite, setIsFavorite] = useState(false); 
 
     useEffect(() => {
-        if (props.id) {
-            actions.getVehicleDetails(props.id);
+        if (id) {
+            actions.getVehicleDetails(id);
         }
-    }, [props.id]);
+    }, [id]);
 
     const handleAddToFavorites = () => {
-        actions.addItem(props.name);
+        actions.addItem(name);
         setIsFavorite(true); 
     };
 
     return (
         <div className="card" style={{ width: "18rem" }}>
-            <img src="https://s1.elespanol.com/2023/09/13/actualidad/794181310_236024913_1706x960.jpg" className="card-img-top" alt="..." />
+            <img src={`https://starwars-visualguide.com/assets/img/vehicles/${id}.jpg`} className="card-img-top" alt="..." />
             <div className="card-body">
-                <h5 className="card-title">{props.name}</h5>
+                <h5 className="card-title">{name}</h5>
                
                 <p className="card-text">Tripulacion: {vehicle.crew}</p>
                 <p className="card-text">Modelo: { vehicle.model}</p>
 
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <Link to={`/singlev/${props.id}`} className="btn btn-custom">Más info</Link>
+                    <Link to={`/singlev/${id}`} className="btn btn-custom">Más info</Link>
                     <button className="btn btn-warning" onClick={handleAddToFavorites}>
                         <i className="fa fa-heart" style={{ color: isFavorite ? 'red' : 'white' }}></i>
                     </button>
@@ -40,8 +40,9 @@ export const CardVehicles = (props) => {
 };
 
 CardVehicles.propTypes = {
-    name: PropTypes.string,
     id: PropTypes.string,
+    name: PropTypes.string,
+    
 };
 
 export default CardVehicles;

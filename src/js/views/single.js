@@ -2,15 +2,11 @@ import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-
 export const Single = () => {
     const { store } = useContext(Context);
     const params = useParams();
-   
-    
     const characterDetails = store.character.details;
-    
-   
+
     if (!characterDetails) {
         return <h1>Character not found</h1>;
     }
@@ -19,7 +15,7 @@ export const Single = () => {
         <div className="container">
             <div className="row mb-4">
                 <div className="col-md-6">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdSSth0Lo9BZQzVOJW9Jyypco6pHK8k-Yvhs25JEx5lw&s" alt="luke" className="img-fluid custom-height" />
+                    <img src={`https://starwars-visualguide.com/assets/img/characters/${params.id}.jpg`} alt="luke" className="img-fluid custom-height" />
                 </div>
                 <div className="col-md-6">
                     <div className="jumbotron">

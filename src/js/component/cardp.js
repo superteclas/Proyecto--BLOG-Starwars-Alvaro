@@ -3,33 +3,33 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext.js";
 
-export const CardPlanetas = (props) => {
+export const CardPlanetas = ({ id, name }) => {
     const { store, actions } = useContext(Context);
     const { planet } = store;
     const [isFavorite, setIsFavorite] = useState(false); 
 
     useEffect(() => {
-        if (props.id) {
-            actions.getPlanetDetails(props.id);
+        if (id) {
+            actions.getPlanetDetails(id);
         }
-    }, [props.id]);
+    }, [id]);
 
     const handleAddToFavorites = () => {
-        actions.addItem(props.name);
+        actions.addItem(name);
         setIsFavorite(true); 
     };
 
     return (
         <div className="card" style={{ width: "18rem" }}>
-            <img src="https://static.wikia.nocookie.net/esstarwars/images/c/c9/Galaxymap3.jpg/revision/latest?cb=20210504230731" className="card-img-top" alt="..." />
+            <img src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`} className="card-img-top" alt="..." />
             <div className="card-body">
-                <h5 className="card-title">{props.name}</h5>
+                <h5 className="card-title">{name}</h5>
                 
                 <p className="card-text">Habitantes: { planet.population}</p>
                 <p className="card-text">Superficie: { planet.terrain}</p>
 
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <Link to={`/singlep/${props.id}`} className="btn btn-custom">Más info</Link>
+                    <Link to={`/singlep/${id}`} className="btn btn-custom">Más info</Link>
                     <button className="btn btn-warning" onClick={handleAddToFavorites}>
                          <i className="fa fa-heart" style={{ color: isFavorite ? 'red' : 'white' }}></i>
                     </button>
@@ -40,8 +40,9 @@ export const CardPlanetas = (props) => {
 };
 
 CardPlanetas.propTypes = {
-    name: PropTypes.string,
     id: PropTypes.string,
+    name: PropTypes.string,
+    
 };
 
 export default CardPlanetas;
