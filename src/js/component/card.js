@@ -8,12 +8,12 @@ export const Card = ({ id, name, }) => {
     const { character } = store;
     const [isFavorite, setIsFavorite] = useState(false); 
 
-    useEffect(() => {
+ /*    useEffect(() => {
         if (id) {
             actions.getCharacterDetails(id,);
         }
     }, [id]);
-
+ */
     const handleAddToFavorites = () => {
         actions.addItem(name);
         setIsFavorite(true); 
@@ -24,10 +24,10 @@ export const Card = ({ id, name, }) => {
             <img src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} className="card-img-top" alt="..." />
             <div className="card-body">
                 <h5 className="card-title">{name}</h5>
-                <p className="card-text">Genero: {character.gender}</p>
+                <p className="card-text">Genero:</p>
                 
-                <p className="card-text">Color de Piel: {character.skinColor}</p>
-                <p className="card-text">Color de Ojos: {character.eyeColor}</p>
+                <p className="card-text">Color de Piel:</p>
+                <p className="card-text">Color de Ojos:</p>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <Link to={`/single/${id}`} className="btn btn-custom">Más info</Link>
                     <button className="btn btn-warning" onClick={handleAddToFavorites}>
