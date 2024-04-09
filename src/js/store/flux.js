@@ -8,10 +8,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			info: []
 		},
 		actions: {
-			// Use getActions to call a function within a function
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
+			
+	
 			getPeople: () => {
 				fetch("https://www.swapi.tech/api/people/", {
 					method: 'GET'

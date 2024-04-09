@@ -20,7 +20,7 @@ export const Home = () => {
 
 	return (
 		<div className="home">
-			<h2 className="tittles text-danger ms-5">Characters</h2>
+			<h2 className="tittles text-primary ms-5">Characters</h2>
 			<div className="cards d-flex mx-4" style={{ overflowX: "scroll" }}>
 				{store.peoples.map((people) => {
 					return (
@@ -37,7 +37,7 @@ export const Home = () => {
 				})}
 			</div>
 
-			<h2 className="tittles text-danger mt-3 ms-5">Planets</h2>
+			<h2 className="tittles text-primary mt-3 ms-5">Planets</h2>
 			<div className="cards d-flex mx-4" style={{ overflowX: "scroll" }}>
 				{store.planets.map((planet) => {
 					return (
@@ -54,7 +54,7 @@ export const Home = () => {
 				})}
 			</div>
 
-			<h2 className="tittles text-danger mt-3 ms-5">Vehicles</h2>
+			<h2 className="tittles text-primary mt-3 ms-5">Vehicles</h2>
 			<div className="cards d-flex mx-4" style={{ overflowX: "scroll" }}>
 				{store.vehicles.map((vehicle) => {
 					return (

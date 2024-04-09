@@ -43,8 +43,8 @@ export const Detalles = () => {
                 </div>
                 
             </div>
-            <div className="tittle-bottom">
-                <div className="d-flex justify-content-around text-center text-danger mt-4">
+            <div className="tittle-bottom"style={{fontSize:"smaller" }}>
+                <div className="d-flex justify-content-around text-center text-primary mt-2" style={{ borderTop: "1px solid white" }}>
                     <div className="name-body d-block">
                         <h5 className="name-title">Name</h5>
                         <p className="name-text">{store.info?.properties?.name}</p>
