@@ -26,7 +26,7 @@ export const CardPlanets = ({ planets }) => {
                 <Link to={"/detalles/planets/" + planets.uid}>
                     <button href="#" className="btn btn-outline-primary me-6">Learn more!</button>
                 </Link>
-                <a href="#" className="corazon btn btn-outline-primary ms-5" onClick={addFavorites}>
+                <a href="#" className="btn btn-outline-primary ms-5" onClick={addFavorites}>
                     <i className={`fa- regular fa-heart ${addHeart ? "fas" : "far"}`}></i>
                 </a>
             </div>

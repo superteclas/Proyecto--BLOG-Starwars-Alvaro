@@ -38,7 +38,7 @@ export const Detalles = () => {
                     alt="image" 
                 />
                 <div className="detalles-personaje d-block justify-content-center text-center">
-                    <h1 className="titulo-nombre">{store.info?.properties?.name}</h1>
+                    <h1 className="name-title-detalles">{store.info?.properties?.name}</h1>
                     <p className="description">{store.info?.description}</p>
                 </div>
                 
