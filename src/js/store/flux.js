@@ -59,7 +59,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     .then(res => res.json())
                     .then(data => {
                         console.log("Character details flux:", data.result.properties); 
-                        const characterDetails = data.result.properties || {};
+                        /* const characterDetails = data.result.properties || {}; */
                         setStore({
                             character: {
                                 id: id,
@@ -79,7 +79,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 fetch(`https://www.swapi.tech/api/planets/${id}`)
                     .then(res => res.json())
                     .then(data => {
-                        console.log("planet details flux:", data.result.properties); 
+                        /* console.log("planet details flux:", data.result.properties);  */
                         const PlanetDetails = data.result.properties || {};
                         setStore({
                             planet: {
@@ -101,7 +101,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 fetch(`https://www.swapi.tech/api/vehicles/${id}`)
                     .then(res => res.json())
                     .then(data => {
-                        console.log("vehicle details flux:", data.result.properties); 
+                        /* console.log("vehicle details flux:", data.result.properties);  */
                         const VehicleDetails = data.result.properties || {};
                         setStore({
                             vehicle: {

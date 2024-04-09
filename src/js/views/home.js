@@ -16,7 +16,7 @@ export const Home = () => {
     }, []);
 
    
-
+    /* console.log("buscando que dibuje algo en home" + " " + character.gender); */
     return (
         <div>
             <div className="cards-section mb-4">

@@ -25,7 +25,7 @@ export const Singlep = () => {
                 <div className="col-md-6">
                     <div className="jumbotron">
                         <h3 className="display text-white">{planetDetails.name}</h3>
-                        <p className="lead text-white">Las características de los carácteres, planetas y vehículos en las cards son genéricos, al igual que las imágenes porque la API no proporciona imágenes.</p>
+                        <p className="lead text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas eros eget volutpat imperdiet. Fusce non consectetur arcu. Vivamus vel ultrices mauris. Etiam lobortis, felis in porttitor rutrum, neque metus varius lacus, ac volutpat massa nisl nec justo. Quisque sed viverra erat, sed lacinia lorem. Pellentesque sed nisl quis arcu lacinia cursus. Fusce fermentum blandit consequat. Quisque vitae ante ac diam condimentum fermentum vitae ac arcu. Quisque cursus facilisis arcu eu feugiat. Nam fringilla lacus ultricies velit tristique mattis. Vestibulum quis enim sed magna luctus porta quis vel diam. Cras at orci vulputate, tincidunt nunc vel, faucibus neque. Aliquam sit amet aliquam magna. Fusce ac dolor turpis.</p>
                     </div>
                 </div>
             </div>
