@@ -11,7 +11,7 @@ export const Navbar = () => {
 
     const handleRemoveFavorite = (favoriteName, event) => {
         event.stopPropagation(); 
-        actions.removeItem(favoriteName);
+        actions.deleteFavorite(favoriteName);
     };
 
     const toggleDropdown = () => {

@@ -3,17 +3,15 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
-import { Demo } from "./views/demo";
-import { Single } from "./views/single";
-import { Singlep } from "./views/singlep"; 
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-import { Singlev } from "./views/singlev";
-
+import { Detalles } from "./views/detalles";
 
 const Layout = () => {
+    // The basename is used when your project is published in a subdirectory and not in the root of the domain.
+    // You can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
     const basename = process.env.BASENAME || "";
 
     return (
@@ -23,10 +21,7 @@ const Layout = () => {
                     <Navbar />
                     <Routes>
                         <Route path="/" element={<Home />} />
-                        <Route path="/demo" element={<Demo />} />
-                        <Route path="/single/:theid" element={<Single />} />
-                        <Route path="/singlep/:theid" element={<Singlep />} /> 
-                        <Route path="/singlev/:theid" element={<Singlev />} />
+                        <Route path="/detalles/:type/:uid" element={<Detalles />} />
                         <Route path="*" element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
