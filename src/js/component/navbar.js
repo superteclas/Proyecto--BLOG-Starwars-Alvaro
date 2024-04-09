@@ -24,7 +24,7 @@ export const Navbar = () => {
                 <img src="https://1000logos.net/wp-content/uploads/2017/06/Star-Wars-Logo-1.png" alt="Logo" style={{ width: '100%', height: 'auto', filter: 'invert(100%)' }} />
             </Link>
             <div className="dropdown ml-auto" style={{ marginRight: '5em' }}> 
-                <a className="btn btn-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" onClick={toggleDropdown}>
+                <a className="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" onClick={toggleDropdown}>
                     Favoritos ({favorites.length})
                 </a>
                 <ul className={"dropdown-menu" + (dropdownOpen ? " show" : "")} onClick={(e) => e.stopPropagation()}> 

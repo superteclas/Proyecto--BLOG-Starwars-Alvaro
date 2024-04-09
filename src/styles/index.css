@@ -22,11 +22,11 @@ body{
 .image-text {
     margin-left: 0;
     color: whitesmoke;
-    margin-top: 0; /* Elimina el margen superior */
+    margin-top: 0;
 }
 
 .display {
-    margin-top: 0em; /* Mantiene el margen superior para el título */
+    margin-top: 0em; 
 }
 .footer{
     

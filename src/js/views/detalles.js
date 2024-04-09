@@ -24,7 +24,7 @@ export const Detalles = () => {
     useEffect(() => {
         actions.getInfo(params.type, params.uid);
     }, []);
-
+/*     console.log("holaaaa"+ store.info.properties.name); */
     return (
         <div className="jumbotron">
             <div className="tittle-top d-flex justify-content-evenly">
@@ -41,6 +41,7 @@ export const Detalles = () => {
                     <h1 className="titulo-nombre">{store.info?.properties?.name}</h1>
                     <p className="description">{store.info?.description}</p>
                 </div>
+                
             </div>
             <div className="tittle-bottom">
                 <div className="d-flex justify-content-around text-center text-danger mt-4">
