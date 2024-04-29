@@ -81,7 +81,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					let data = await response.json()
 					console.log(email);
 					if (response.status === 200){
-						console.log(data.access_token);
+						console.log("holaaaaa" + data.access_token);
 						localStorage.setItem("token", data.access_token);
 
 						console.log(data);

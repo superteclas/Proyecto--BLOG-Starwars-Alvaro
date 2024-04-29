@@ -1,39 +1,28 @@
-// Layout.js
-import React, { useContext } from "react";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
+
 import { Home } from "./views/home";
 import injectContext from "./store/appContext";
+
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Detalles } from "./views/detalles";
 import { Login } from "./views/login";
-import { Context } from "./store/appContext"; // Importa el contexto de tu aplicación
 
 const Layout = () => {
-    const { store } = useContext(Context);
+    // The basename is used when your project is published in a subdirectory and not in the root of the domain.
+    // You can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
+    const basename = process.env.BASENAME || "";
 
-    // Si el usuario no está autenticado, redirige a la página de inicio de sesión
-    if (!store.isLoggedIn) {
-        return (
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/login" element={<Login />} />
-                    {/* Redirige a la página de inicio de sesión */}
-                    <Route path="/" element={<Navigate to="/login" />} />
-                </Routes>
-            </BrowserRouter>
-        );
-    }
-
-    // Si el usuario está autenticado, muestra el resto de la aplicación
     return (
         <div>
-            <BrowserRouter>
+            <BrowserRouter basename={basename}>
                 <ScrollToTop>
                     <Navbar />
                     <Routes>
                         <Route path="/" element={<Home />} />
+                        <Route path="/login" element={<Login />} />
                         <Route path="/detalles/:type/:uid" element={<Detalles />} />
                         <Route path="*" element={<h1>Not found!</h1>} />
                     </Routes>
