@@ -65,7 +65,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 						getActions().addFavorite(name);
 					}
 				}
-			}
+			},
+			login: async (email, password) => {
+				try{
+					let response = await fetch('http://127.0.0.1:3000//login',{
+						method: "POST",
+						headers:{
+							"Content-Type":"application/json" 
+						},
+						body: JSON.stringify({
+							email:email,
+							password:password
+						})
+					})
+					let data = await response.json()
+					console.log(email);
+					if (response.status === 200){
+						console.log(data.access_token);
+						localStorage.setItem("token", data.access_token);
+
+						console.log(data);
+						return true;
+					}else{
+						return false;
+					}
+
+					}catch(error){
+						console.log(error);
+						return false;	
+				}
+			},
+
 		}
 	};
 };

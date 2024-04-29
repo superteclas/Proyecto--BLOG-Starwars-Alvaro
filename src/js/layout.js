@@ -8,6 +8,7 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Detalles } from "./views/detalles";
+import { Login } from "./views/login";
 
 const Layout = () => {
     // The basename is used when your project is published in a subdirectory and not in the root of the domain.
@@ -21,6 +22,7 @@ const Layout = () => {
                     <Navbar />
                     <Routes>
                         <Route path="/" element={<Home />} />
+                        <Route path="/login" element={<Login />} />
                         <Route path="/detalles/:type/:uid" element={<Detalles />} />
                         <Route path="*" element={<h1>Not found!</h1>} />
                     </Routes>
