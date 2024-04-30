@@ -30,9 +30,9 @@ export const Detalles = () => {
             <div className="tittle-top d-flex justify-content-evenly">
                 <img 
                     src={
-                        type === "planets" && params.uid === "1"
+                        type === "planets" && params.id === "1"
                             ? "https://static.wikia.nocookie.net/esstarwars/images/b/b0/Tatooine_TPM.png/revision/latest?cb=20131214162357"
-                            : `https://starwars-visualguide.com/assets/img/${type}/${params.uid}.jpg`
+                            : `https://starwars-visualguide.com/assets/img/${type}/${params.id}.jpg`
                     } 
                     className="img-left" 
                     alt="image" 

@@ -12,7 +12,7 @@ export const CardPeople = ({ people }) => {
 
     return (
         <div className="card" style={{ width: "18rem" }}>
-            <img src={`https://starwars-visualguide.com/assets/img/characters/${people.uid}.jpg`} className="card-img-top" alt="..." />
+            <img src={`https://starwars-visualguide.com/assets/img/characters/${people.id}.jpg`} className="card-img-top" alt="..." />
             <div className="card-body">
                 <h5 className="card-text">{people.name}</h5>
                 <p className="card-text">Gender: {people.gender}</p>
