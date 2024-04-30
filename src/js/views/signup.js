@@ -19,7 +19,7 @@ export const Signup = () => {
 
     return (
         <div className="container">
-            <h1 className="text-center mb-4">Signup</h1>
+            <h1 className="text-center mb-4" style={{ color: "white" }}>Signup</h1>
             <form onSubmit={handleSubmit} className="mx-auto" style={{ maxWidth: "400px" }}>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail" className="form-label">Email</label>

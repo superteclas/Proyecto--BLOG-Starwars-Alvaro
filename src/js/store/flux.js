@@ -11,7 +11,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			
 	
 			getPeople: () => {
-				fetch("http://127.0.0.1:3000/people", {
+				fetch("https://glowing-fishstick-7v9q5pjqjqj52wwg5-3000.app.github.dev/people", {
 					method: 'GET'
 				})
 				.then(res => res.json())
@@ -19,7 +19,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.catch(err => console.error(err));
 			},
 			getPlanets: () => {
-				fetch("http://127.0.0.1:3000/planets/", {
+				fetch("https://glowing-fishstick-7v9q5pjqjqj52wwg5-3000.app.github.dev/planets/", {
 					method: 'GET'
 				})
 				.then(res => res.json())
@@ -27,7 +27,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.catch(err => console.error(err));
 			},
 			getVehicles: () => {
-				fetch("http://127.0.0.1:3000/vehicles", {
+				fetch("https://glowing-fishstick-7v9q5pjqjqj52wwg5-3000.app.github.dev/vehicles", {
 					method: 'GET'
 				})
 				.then(res => res.json())
@@ -68,7 +68,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			login: async (email, password) => {
 				try{
-					let response = await fetch('http://127.0.0.1:3000/login',{
+					let response = await fetch('https://glowing-fishstick-7v9q5pjqjqj52wwg5-3000.app.github.dev/login',{
 						method: "POST",
 						headers:{
 							"Content-Type":"application/json" 
@@ -98,7 +98,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			
 			signup: async (email, password) => {
 				try {
-					let response = await fetch('http://127.0.0.1:3000/user', {
+					let response = await fetch('https://glowing-fishstick-7v9q5pjqjqj52wwg5-3000.app.github.dev/signup', {
 						method: "POST",
 						headers: {
 							"Content-Type": "application/json"

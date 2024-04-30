@@ -47,7 +47,7 @@ export const Detalles = () => {
                 <div className="d-flex justify-content-around text-center text-primary mt-2" style={{ borderTop: "1px solid white" }}>
                     <div className="name-body d-block">
                         <h5 className="name-title">Name</h5>
-                        <p className="name-text">{store.info?.properties?.name}</p>
+                        <p className="name-text">{store.info?.people?.name}</p>
                     </div>
                     <div className="birth-body d-block">
                         <h5 className="birth-title">{params.type === "people" ? "Birth year" : params.type === "planets" ? "Climate" : params.type === "vehicles" ? "Model" : ""}</h5>
