@@ -41,7 +41,7 @@ export const Navbar = () => {
                 </ul>
             </div>
             {/* Agregar margen al botón de login */}
-            <Link to="/login" className="btn btn-primary ml-3" style={{ marginRight: '1em' }}>Login</Link>
+            <Link to="/signup" className="btn btn-primary ml-3" style={{ marginRight: '1em' }}>Signup</Link>
         </nav>
     );
 };

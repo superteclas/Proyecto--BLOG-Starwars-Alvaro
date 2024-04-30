@@ -18,10 +18,10 @@ export const CardVehicles = ({ vehicles }) => {
                 alt="..." 
             />
             <div className="card-body">
-                <h5 className="card-text">{vehicles.name}</h5>
+                <h5 className="card-text">{vehicles.model}</h5>
                 <p className="card-text">Model: </p>
                 <p className="card-text">Vehicle_class: </p>
-                <Link to={"/detalles/vehicles/" + vehicles.uid}>
+                <Link to={"/detalles/vehicles/" + vehicles.id}>
                     <button href="#" className="btn btn-outline-primary me-6">Learn more!</button>
                 </Link>
                 <a href="#" className="btn btn-outline-primary ms-5" onClick={addFavorites}>

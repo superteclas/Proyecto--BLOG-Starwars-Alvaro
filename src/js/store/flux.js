@@ -11,7 +11,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			
 	
 			getPeople: () => {
-				fetch("https://www.swapi.tech/api/people/", {
+				fetch("http://127.0.0.1:3000/people", {
 					method: 'GET'
 				})
 				.then(res => res.json())
@@ -19,7 +19,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.catch(err => console.error(err));
 			},
 			getPlanets: () => {
-				fetch("https://www.swapi.tech/api/planets/", {
+				fetch("http://127.0.0.1:3000/planets/", {
 					method: 'GET'
 				})
 				.then(res => res.json())
@@ -27,7 +27,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.catch(err => console.error(err));
 			},
 			getVehicles: () => {
-				fetch("https://www.swapi.tech/api/vehicles/", {
+				fetch("http://127.0.0.1:3000/vehicles", {
 					method: 'GET'
 				})
 				.then(res => res.json())
@@ -95,6 +95,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return false;	
 				}
 			},
+			
+			signup: async (email, password) => {
+				try {
+					let response = await fetch('http://127.0.0.1:3000/user', {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify({
+							email: email,
+							password: password
+						})
+					});
+			
+					let data = await response.json();
+			
+					if (response.ok) {
+						console.log("Signup successful");
+						localStorage.setItem("token", data.access_token);
+						return true;
+					} else {
+						console.log("Signup failed:", data.msg);
+						// Puedes manejar el mensaje de error de acuerdo a tus necesidades, por ejemplo, mostrando un mensaje al usuario
+						return false;
+					}
+				} catch (error) {
+					console.log("Error during signup:", error);
+					return false;
+				}
+			},
+			
 
 		}
 	};
