@@ -4,7 +4,7 @@ import { Context } from "../store/appContext";
 
 export const Navbar = () => {
     const { store, actions } = useContext(Context);
-    const { favorites } = store;
+    const { favorites, isLoggedIn } = store;
     const [dropdownOpen, setDropdownOpen] = useState(false); 
 
     const handleRemoveFavorite = (favoriteName, event) => {
@@ -14,6 +14,11 @@ export const Navbar = () => {
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
+    };
+
+    const handleLogout = () => {
+        // Aquí deberías implementar la lógica para cerrar sesión
+        // Por ejemplo, podrías llamar a una función actions.logout()
     };
 
     return (
@@ -40,8 +45,12 @@ export const Navbar = () => {
                     )}
                 </ul>
             </div>
-            {/* Agregar margen al botón de login */}
-            <Link to="/signup" className="btn btn-primary ml-3" style={{ marginRight: '1em' }}>Signup</Link>
+            {/* Mostrar botón de cerrar sesión si el usuario está autenticado, de lo contrario, mostrar botón de registro */}
+            {isLoggedIn ? (
+                <button className="btn btn-primary ml-3" onClick={handleLogout} style={{ marginRight: '1em' }}>Cerrar sesión</button>
+            ) : (
+                <Link to="/signup" className="btn btn-primary ml-3" style={{ marginRight: '1em' }}>Signup</Link>
+            )}
         </nav>
     );
 };

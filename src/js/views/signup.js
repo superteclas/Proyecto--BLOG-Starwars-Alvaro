@@ -1,4 +1,3 @@
-
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
@@ -33,6 +32,7 @@ export const Signup = () => {
                     <button type="submit" className="btn btn-primary">Signup</button>
                 </div>
             </form>
+            <p className="text-center mt-3">Si ya estás registrado, <a href="/login">logeate aquí</a>.</p>
         </div>
     );
 };
