@@ -13,6 +13,9 @@ export const Signup = () => {
         const registered = await actions.signup(email, password);
         if (registered) {
             navigate("/login");
+        } else {
+            alert("El usuario ya existe. Por favor, inicia sesión.");
+            navigate("/login");
         }
     };
 
