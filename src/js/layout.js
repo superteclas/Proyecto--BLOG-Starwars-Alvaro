@@ -11,6 +11,7 @@ import { Footer } from "./component/footer";
 import { Detalles } from "./views/detalles";
 import { Login } from "./views/login";
 import { Signup } from "./views/signup";
+import { Favorites } from "./views/favorites"
 
 const Layout = () => {
     // The basename is used when your project is published in a subdirectory and not in the root of the domain.
@@ -29,9 +30,10 @@ const Layout = () => {
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<Signup />} />
                         <Route path="/detalles/:type/:uid" element={<Detalles />} />
+                        <Route path="/favorites" element={<Favorites />} />
                         <Route path="*" element={<h1>Not found!</h1>} />
                     </Routes>
-                    <Footer />
+                    <Footer/>
                 </ScrollToTop>
             </BrowserRouter>
         </div>

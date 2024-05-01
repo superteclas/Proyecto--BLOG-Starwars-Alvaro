@@ -12,7 +12,7 @@ export const Login = () => {
         e.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
         const loggedIn = await actions.login(email, password); // Esperar a que la acción de inicio de sesión se complete
         if (loggedIn) {
-            navigate("/"); // Redirigir al usuario a la página de inicio si el inicio de sesión fue exitoso
+            navigate("/favorites"); // Redirigir al usuario a la página de private si el inicio de sesión fue exitoso
         } else {
             // Mostrar una alerta al usuario si el inicio de sesión falló
             alert("Email o contraseña incorrectos. Por favor, inténtalo de nuevo.");

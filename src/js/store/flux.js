@@ -125,6 +125,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false;
 				}
 			},
+
+			getFavorites: async () => {
+				let token = localStorage.getItem("token");
+				try {
+					let response = await fetch(`https://glowing-fishstick-7v9q5pjqjqj52wwg5-3000.app.github.dev/users/favorites`, {
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json",
+							"Authorization": "Bearer " + token
+						},
+					});
+					let data = await response.json();
+			
+					if (response.ok) {
+						// Devolver solo los resultados en lugar de todo el objeto de respuesta
+						return data.results;
+					} else {
+						console.error("Error fetching favorites:", data.msg || response.statusText);
+						return []; // Devolver una matriz vacía si hay un error
+					}
+				} catch (error) {
+					console.error("Error fetching favorites:", error);
+					return []; // Devolver una matriz vacía si hay un error
+				}
+			},
 			
 
 		}
