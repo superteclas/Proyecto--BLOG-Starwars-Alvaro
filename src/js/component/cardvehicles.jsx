@@ -13,7 +13,7 @@ export const CardVehicles = ({ vehicles }) => {
     return (
         <div className="card" style={{ width: "18rem" }}>
             <img 
-                src={`https://starwars-visualguide.com/assets/img/vehicles/${vehicles.id}.jpg`} 
+                src={`https://starwars-visualguide.com/assets/img/vehicles/${vehicles.uid}.jpg`} 
                 className="card-img-top" 
                 alt="..." 
             />

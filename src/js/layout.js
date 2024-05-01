@@ -1,7 +1,7 @@
-
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
+
 
 import { Home } from "./views/home";
 import injectContext from "./store/appContext";
@@ -11,7 +11,7 @@ import { Footer } from "./component/footer";
 import { Detalles } from "./views/detalles";
 import { Login } from "./views/login";
 import { Signup } from "./views/signup";
-import { Favorites } from "./views/favorites"
+import Favorites from "./views/favorites"; // Importamos la vista de favoritos
 
 const Layout = () => {
     // The basename is used when your project is published in a subdirectory and not in the root of the domain.
@@ -30,6 +30,7 @@ const Layout = () => {
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<Signup />} />
                         <Route path="/detalles/:type/:uid" element={<Detalles />} />
+                        {/* Usamos ProtectedRoute para la ruta de favoritos */}
                         <Route path="/favorites" element={<Favorites />} />
                         <Route path="*" element={<h1>Not found!</h1>} />
                     </Routes>

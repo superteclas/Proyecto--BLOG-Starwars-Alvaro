@@ -18,7 +18,7 @@ export const CardPeople = ({ people }) => {
                 <p className="card-text">Gender: {people.gender}</p>
                 <p className="card-text">Hair color: {people.hair_color}</p>
                 <p className="card-text">Eye color: {people.eye_color}</p>
-                <Link to={"/detalles/people/" + people.uid}>
+                <Link to={"/detalles/people/" + people.id}>
                     <button className="btn btn-outline-primary me-6">Learn more!</button>
                 </Link>
                 <button className="btn btn-outline-primary ms-5" onClick={addFavorites}>

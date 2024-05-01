@@ -15,7 +15,7 @@ export const CardPlanets = ({ planets }) => {
             <img 
                 src={planets.uid == 1 
                     ? "https://static.wikia.nocookie.net/esstarwars/images/b/b0/Tatooine_TPM.png/revision/latest?cb=20131214162357" 
-                    : `https://starwars-visualguide.com/assets/img/planets/${planets.id}.jpg`} 
+                    : `https://starwars-visualguide.com/assets/img/planets/${planets.uid}.jpg`} 
                 className="card-img-top" 
                 alt="image" 
             />
@@ -23,7 +23,7 @@ export const CardPlanets = ({ planets }) => {
                 <h5 className="card-text">{planets.name}</h5>
                 <p className="card-text">Population: </p>
                 <p className="card-text">Terrain: </p>
-                <Link to={"/detalles/planets/" + planets.uid}>
+                <Link to={"/detalles/planets/" + planets.id}>
                     <button href="#" className="btn btn-outline-primary me-6">Learn more!</button>
                 </Link>
                 <a href="#" className="btn btn-outline-primary ms-5" onClick={addFavorites}>
