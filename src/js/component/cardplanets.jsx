@@ -13,9 +13,9 @@ export const CardPlanets = ({ planets }) => {
     return (
         <div className="card" style={{ width: "18rem" }}>
             <img 
-                src={planets.uid == 1 
+                src={planets.id == 1 
                     ? "https://static.wikia.nocookie.net/esstarwars/images/b/b0/Tatooine_TPM.png/revision/latest?cb=20131214162357" 
-                    : `https://starwars-visualguide.com/assets/img/planets/${planets.uid}.jpg`} 
+                    : `https://starwars-visualguide.com/assets/img/planets/${planets.id}.jpg`} 
                 className="card-img-top" 
                 alt="image" 
             />
