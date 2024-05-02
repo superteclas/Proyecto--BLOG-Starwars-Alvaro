@@ -45,10 +45,7 @@ export const Detalles = () => {
             </div>
             <div className="tittle-bottom"style={{fontSize:"smaller" }}>
                 <div className="d-flex justify-content-around text-center text-primary mt-2" style={{ borderTop: "1px solid white" }}>
-                    <div className="name-body d-block">
-                        <h5 className="name-title">Name</h5>
-                        <p className="name-text">{store.info?.people?.name}</p>
-                    </div>
+                   
                     <div className="birth-body d-block">
                         <h5 className="birth-title">{params.type === "people" ? "Birth year" : params.type === "planets" ? "Climate" : params.type === "vehicles" ? "Model" : ""}</h5>
                         <p className="birth-text">{params.type === "people" ? store.info?.properties?.birth_year : params.type === "planets" ? store.info?.properties?.climate : params.type === "vehicles" ? store.info?.properties?.model : ""}</p>
