@@ -6,8 +6,21 @@ export const CardPeople = ({ people }) => {
     const { store, actions } = useContext(Context);
     const addHeart = store.favorites.includes(people.name);
 
-    const addFavorites = () => {
+    const addFavorites = async () => {
+        // Primero agregamos el favorito localmente
         actions.favoriteList(people.name);
+
+        // Luego hacemos la llamada a la API específica para agregar el favorito del personaje
+        try {
+            const success = await actions.addFavoriteCharacter(id);
+            if (success) {
+                console.log("Favorito agregado correctamente");
+            } else {
+                console.log("Error al agregar el favorito");
+            }
+        } catch (error) {
+            console.error("Error al agregar el favorito:", error);
+        }
     };
 
     return (

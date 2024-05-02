@@ -50,6 +50,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const newArray = store.favorites.concat(favorite);
 				setStore({ favorites: newArray });
 			},
+			addFavorite:(name)=> {
+				setStore({favorites:getStore().favorites.concat(name)})
+				console.log(getStore().favorites);
+			},
+
 			deleteFavorite: (name) => {
 				const arrayfiltered = getStore().favorites.filter((item, index) => item !== name);
 				setStore({ favorites: arrayfiltered });
@@ -151,9 +156,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			
+			
+			addFavoriteCharacter: async () => {
+				let token = localStorage.getItem("token")
+				try{
+					let response = await fetch(`https://bug-free-space-garbanzo-5gq6rx76jqpwh4w67-3000.app.github.dev/users/favorites/${id}`,{
+						method: "POST",
+						headers:{
+							"Content-Type":"application/json",
+							"Authorization":"Bearer "+token
+						},
+					})
+					let data = await response.json()
+					
+					if (response.status === 200){
+						console.log(data);
+						return true;
+					}else{
+						return false;
+					}
+
+				}catch(error){
+					console.log(error);
+					return false;	
+				}
+			},
+		
 
 		}
 	};
 };
+
 
 export default getState;

@@ -11,7 +11,8 @@ import { Footer } from "./component/footer";
 import { Detalles } from "./views/detalles";
 import { Login } from "./views/login";
 import { Signup } from "./views/signup";
-import Favorites from "./views/favorites"; // Importamos la vista de favoritos
+import Favorites from "./views/favorites";
+ // Importamos la vista de favoritos
 
 const Layout = () => {
     // The basename is used when your project is published in a subdirectory and not in the root of the domain.
@@ -21,20 +22,17 @@ const Layout = () => {
     return (
         <div>
             <BrowserRouter basename={basename}>
-            
                 <ScrollToTop>
-                    
                     <Navbar />
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/signup" element={<Signup />} />
                         <Route path="/detalles/:type/:uid" element={<Detalles />} />
-                        {/* Usamos ProtectedRoute para la ruta de favoritos */}
                         <Route path="/favorites" element={<Favorites />} />
                         <Route path="*" element={<h1>Not found!</h1>} />
                     </Routes>
-                    <Footer/>
+                    <Footer />
                 </ScrollToTop>
             </BrowserRouter>
         </div>

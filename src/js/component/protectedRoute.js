@@ -1,14 +1,21 @@
-import React from "react";
-import { Route, Navigate } from "react-router-dom";
-import { useStore } from "../store/appContext"; 
+import React from 'react';
+import { Route, Navigate } from 'react-router-dom';
 
-const ProtectedRoute = ({ element, ...rest }) => {
-    const { isAuthenticated } = useStore(); 
 
-    return isAuthenticated ? (
-        <Route {...rest} element={element} />
-    ) : (
-        <Navigate to="/login" replace /> 
+function checkToken() {
+    const token = localStorage.getItem('token');
+    return token != null;
+}
+
+  const ProtectedRoute = ({ element, ...rest }) => {
+    const isAuthenticated = checkToken();
+
+      return (
+        <Route {...rest} element={
+             isAuthenticated
+                ? element
+                 : <Navigate to="/login" />
+        } />
     );
 };
 
