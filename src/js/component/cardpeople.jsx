@@ -4,15 +4,24 @@ import { Link } from "react-router-dom";
 
 export const CardPeople = ({ people }) => {
     const { store, actions } = useContext(Context);
-    const addHeart = store.favorites.includes(people.name);
+    const token = localStorage.getItem("token");
+    console.log("Token:", token)
+    const addHeart = store.favorites.includes( people.id);
 
     const addFavorites = async () => {
+        // Verificar si el token está presente
+        if (!token) {
+            // Mostrar un mensaje o redirigir al usuario a la página de inicio de sesión
+            alert("Debes iniciar sesión para agregar a favoritos");
+            return;
+        }
+
         // Primero agregamos el favorito localmente
-        actions.favoriteList(people.name);
+        actions.favoriteList( people.id);
 
         // Luego hacemos la llamada a la API específica para agregar el favorito del personaje
         try {
-            const success = await actions.addFavoriteCharacter(id);
+            const success = await actions.addFavoriteCharacter(people.id);
             if (success) {
                 console.log("Favorito agregado correctamente");
             } else {
@@ -34,7 +43,7 @@ export const CardPeople = ({ people }) => {
                 <Link to={"/detalles/people/" + people.id}>
                     <button className="btn btn-outline-primary me-6">Learn more!</button>
                 </Link>
-                <button className="btn btn-outline-primary ms-5" onClick={addFavorites}>
+                <button className="btn btn-outline-primary ms-5" onClick={addFavorites} disabled={!token}>
                     <i className={`fa-regular fa-heart ${addHeart ? "fas" : "far"}`}></i>
                 </button>
             </div>

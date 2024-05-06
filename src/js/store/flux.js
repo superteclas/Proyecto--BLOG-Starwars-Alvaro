@@ -86,7 +86,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					let data = await response.json()
 					console.log(email);
 					if (response.status === 200){
-						console.log("holaaaaa" + data.access_token);
+						console.log("holaaaaa" + " " + data.access_token);
 						localStorage.setItem("token", data.access_token);
 
 						console.log(data);
@@ -134,7 +134,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getFavorites: async () => {
 				let token = localStorage.getItem("token");
 				try {
-					let response = await fetch(`https://glowing-fishstick-7v9q5pjqjqj52wwg5-3000.app.github.dev/users/favorites`, {
+					let response = await fetch(`https://bug-free-space-garbanzo-5gq6rx76jqpwh4w67-3000.app.github.dev/users/favorites`, {
 						method: "GET",
 						headers: {
 							"Content-Type": "application/json",
@@ -160,7 +160,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			addFavoriteCharacter: async () => {
 				let token = localStorage.getItem("token")
 				try{
-					let response = await fetch(`https://bug-free-space-garbanzo-5gq6rx76jqpwh4w67-3000.app.github.dev/users/favorites/${id}`,{
+					let response = await fetch(`https://bug-free-space-garbanzo-5gq6rx76jqpwh4w67-3000.app.github.dev/favorite/people/${id}`,{
 						method: "POST",
 						headers:{
 							"Content-Type":"application/json",
@@ -170,7 +170,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					let data = await response.json()
 					
 					if (response.status === 200){
-						console.log(data);
+						console.log("Flux" + " " + data);
 						return true;
 					}else{
 						return false;
