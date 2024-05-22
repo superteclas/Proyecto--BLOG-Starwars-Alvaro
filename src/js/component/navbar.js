@@ -1,34 +1,14 @@
-import React, { useContext, useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const Navbar = () => {
+export const Navbar = ({ isLoggedIn,handleLogout }) => {
     const { store, actions } = useContext(Context);
     const { favorites } = store;
-    const [dropdownOpen, setDropdownOpen] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        // Comprobar si hay un token en el localStorage
-        const token = localStorage.getItem("token");
-        setIsLoggedIn(!!token);
-    }, []);
 
     const handleRemoveFavorite = (favoriteName, event) => {
         event.stopPropagation();
         actions.deleteFavorite(favoriteName);
-    };
-
-    const toggleDropdown = () => {
-        setDropdownOpen(!dropdownOpen);
-    };
-
-    const handleLogout = () => {
-        // Eliminar el token del localStorage y actualizar el estado
-        localStorage.removeItem("token");
-        setIsLoggedIn(false);
-        navigate("/login"); // Redirigir al usuario a la página de login
     };
 
     return (
@@ -38,10 +18,10 @@ export const Navbar = () => {
             </Link>
             {isLoggedIn && (
                 <div className="dropdown" style={{ marginRight: '1em' }}>
-                    <a className="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" onClick={toggleDropdown}>
+                    <a className="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Favoritos ({favorites.length})
                     </a>
-                    <ul className={"dropdown-menu" + (dropdownOpen ? " show" : "")} onClick={(e) => e.stopPropagation()}>
+                    <ul className="dropdown-menu">
                         <li className="dropdown-header">Favoritos</li>
                         {favorites.map((favorite, index) => (
                             <li key={index} className="d-flex align-items-center">
