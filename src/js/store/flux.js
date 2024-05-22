@@ -100,6 +100,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return false;	
 				}
 			},
+
+			logout: () => {
+				localStorage.removeItem("token")
+		 	},
 			
 			signup: async (email, password) => {
 				try {
