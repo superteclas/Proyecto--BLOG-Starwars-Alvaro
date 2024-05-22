@@ -1,11 +1,8 @@
 import React from "react";
-import "../../styles/favorites.css";
 
 const Favorites = () => {
     return (
-        <div className="favorites">
-        <h1 >Favorites</h1>
-        </div>
+        <h1 style={{ color: "white" }}>HOLA PAGINA DE FAVORITOS</h1>
     );
 };
 
