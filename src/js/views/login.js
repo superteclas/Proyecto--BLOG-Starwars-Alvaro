@@ -1,5 +1,5 @@
-import React, { useState, useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Login = () => {
@@ -19,7 +19,6 @@ export const Login = () => {
         }
     };
 
-  
     return (
         <div className="container">
             <h1 className="text-center mb-4" style={{ color: "white" }}>Login</h1>
@@ -36,6 +35,11 @@ export const Login = () => {
                     <button type="submit" className="btn btn-primary">Login</button>
                 </div>
             </form>
+            <div className="text-center mt-3">
+                <Link to="/signup" className="btn btn-link" style={{ color: "white" }}>
+                    Si no estás registrado, puedes registrarte aquí
+                </Link>
+            </div>
         </div>
     );
 };
