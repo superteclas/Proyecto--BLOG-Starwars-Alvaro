@@ -19,14 +19,7 @@ export const Login = () => {
         }
     };
 
-    // Comprobar si hay un token en el local storage al cargar la página
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-        if (token) {
-            navigate("/favorites");
-        }
-    }, [navigate]);
-
+  
     return (
         <div className="container">
             <h1 className="text-center mb-4" style={{ color: "white" }}>Login</h1>
