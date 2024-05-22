@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
@@ -12,12 +12,20 @@ export const Login = () => {
         e.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
         const loggedIn = await actions.login(email, password); // Esperar a que la acción de inicio de sesión se complete
         if (loggedIn) {
-            navigate("/favorites"); // Redirigir al usuario a la página de private si el inicio de sesión fue exitoso
+            navigate("/favorites"); // Redirigir al usuario a la página de favoritos si el inicio de sesión fue exitoso
         } else {
             // Mostrar una alerta al usuario si el inicio de sesión falló
             alert("Email o contraseña incorrectos. Por favor, inténtalo de nuevo.");
         }
     };
+
+    // Comprobar si hay un token en el local storage al cargar la página
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            navigate("/favorites");
+        }
+    }, [navigate]);
 
     return (
         <div className="container">
