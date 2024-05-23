@@ -16,7 +16,7 @@ export const Navbar = ({ isLoggedIn,handleLogout }) => {
             <Link to="/" className="navbar-brand ml-0 h1" style={{ width: '7%', marginLeft: '7em' }}>
                 <img src="https://1000logos.net/wp-content/uploads/2017/06/Star-Wars-Logo-1.png" alt="Logo" style={{ width: '100%', height: 'auto', filter: 'invert(100%)' }} />
             </Link>
-            {isLoggedIn && (
+            { (
                 <div className="dropdown" style={{ marginRight: '1em' }}>
                     <a className="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Favoritos ({favorites.length})
