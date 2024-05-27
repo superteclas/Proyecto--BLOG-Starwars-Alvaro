@@ -4,10 +4,27 @@ import { Link } from "react-router-dom";
 
 export const CardVehicles = ({ vehicles }) => {
     const { store, actions } = useContext(Context);
+    const token = localStorage.getItem("token");
     const addHeart = store.favorites.includes(vehicles.name);
 
-    const addFavorites = () => {
+    const addFavorites = async () => {
+        if (!token) {
+            alert("Debes iniciar sesión para agregar a favoritos");
+            return;
+        }
+
         actions.favoriteList(vehicles.name);
+
+        try {
+            const success = await actions.addFavoriteCharacter(vehicles.id);
+            if (success) {
+                console.log("Favorito agregado correctamente");
+            } else {
+                console.log("Error al agregar el favorito");
+            }
+        } catch (error) {
+            console.error("Error al agregar el favorito:", error);
+        }
     };
 
     return (
@@ -19,14 +36,14 @@ export const CardVehicles = ({ vehicles }) => {
             />
             <div className="card-body">
                 <h5 className="card-text">{vehicles.model}</h5>
-                <p className="card-text">Model: </p>
-                <p className="card-text">Vehicle_class: </p>
+                <p className="card-text">Model: {vehicles.model}</p>
+                <p className="card-text">Vehicle class: {vehicles.vehicle_class}</p>
                 <Link to={"/detalles/vehicles/" + vehicles.id}>
-                    <button href="#" className="btn btn-outline-primary me-6">Learn more!</button>
+                    <button className="btn btn-outline-primary me-6">Learn more!</button>
                 </Link>
-                <a href="#" className="btn btn-outline-primary ms-5" onClick={addFavorites}>
-                    <i className={`fa- regular fa-heart ${addHeart ? "fas" : "far"}`}></i>
-                </a>
+                <button className="btn btn-outline-primary ms-5" onClick={addFavorites} disabled={!token}>
+                    <i className={`fa ${addHeart ? "fa-heart" : "fa-heart-o"}`}></i>
+                </button>
             </div>
         </div>
     );
