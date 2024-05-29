@@ -1,10 +1,7 @@
 import React, { useEffect, useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Navbar } from "../component/navbar.js";
 import { Context } from "../store/appContext"; 
 
 const Favorites = () => {
-    const navigate = useNavigate();
     const { store, actions } = useContext(Context); 
     const [hasReloaded, setHasReloaded] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -32,7 +29,6 @@ const Favorites = () => {
 
     return (
         <div>
-            <Navbar isLoggedIn={isLoggedIn} />
             <h1 style={{ color: "white" }}>HOLA PAGINA DE FAVORITOS</h1>
             <div>
                 {store.favorites.length > 0 ? (

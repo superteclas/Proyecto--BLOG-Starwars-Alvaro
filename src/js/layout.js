@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
@@ -14,15 +14,31 @@ import Favorites from "./views/favorites";
 
 const Layout = () => {
     const basename = process.env.BASENAME || "";
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        setIsLoggedIn(!!token);
+    }, []);
+
+    const handleLogin = (token) => {
+        localStorage.setItem("token", token);
+        setIsLoggedIn(true);
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        setIsLoggedIn(false);
+    };
 
     return (
         <div>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
-                    <ConditionalNavbar />
+                    <ConditionalNavbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
                     <Routes>
                         <Route path="/" element={<Home />} />
-                        <Route path="/login" element={<Login />} />
+                        <Route path="/login" element={<Login onLogin={handleLogin} />} />
                         <Route path="/signup" element={<Signup />} />
                         <Route path="/detalles/:type/:uid" element={<Detalles />} />
                         <Route path="/favorites" element={<Favorites />} />
@@ -35,14 +51,14 @@ const Layout = () => {
     );
 };
 
-const ConditionalNavbar = () => {
+const ConditionalNavbar = ({ isLoggedIn, handleLogout }) => {
     const location = useLocation();
 
-    // Define an array of paths where the Navbar should not be displayed
-    const pathsWithoutNavbar = ["/login", "/signup","/favorites"];
+    const pathsWithoutNavbar = ["/login", "/signup"];
 
-    // Render Navbar only if the current path is not in the pathsWithoutNavbar array
-    return !pathsWithoutNavbar.includes(location.pathname) ? <Navbar /> : null;
+    return !pathsWithoutNavbar.includes(location.pathname) ? (
+        <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
+    ) : null;
 };
 
 export default injectContext(Layout);

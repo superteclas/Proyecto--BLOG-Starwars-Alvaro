@@ -5,7 +5,8 @@ const getState = ({ getStore, getActions, setStore }) => {
             peoples: [],
             planets: [],
             vehicles: [],
-            info: []
+            info: [],
+            isLoggedIn: !!localStorage.getItem("token") // Añadido estado de autenticación
         },
         actions: {
             getPeople: () => {
@@ -68,6 +69,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     let data = await response.json();
                     if (response.ok) {
                         localStorage.setItem("token", data.access_token);
+                        setStore({ isLoggedIn: true }); // Actualizar el estado de autenticación
                         return true;
                     } else {
                         console.log("Login failed:", data.msg);
@@ -90,6 +92,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                     let data = await response.json();
                     if (response.ok) {
                         localStorage.setItem("token", data.access_token);
+                        setStore({ isLoggedIn: true }); // Actualizar el estado de autenticación
                         return true;
                     } else {
                         console.log("Signup failed:", data.msg);
@@ -143,6 +146,10 @@ const getState = ({ getStore, getActions, setStore }) => {
                     console.error("Error adding favorite character:", error);
                     return false;
                 }
+            },
+            logOut: () => {
+                localStorage.removeItem("token");
+                setStore({ favorites: [], isLoggedIn: false }); // Actualizar el estado de autenticación y limpiar favoritos
             }
         }
     };
