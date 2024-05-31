@@ -1,18 +1,18 @@
-import React, {useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [loginError,setLoginError] = useState(false);
-    const {actions} = useContext(Context);
+    const [loginError, setLoginError] = useState(false);
+    const { actions } = useContext(Context);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const isLogged = await actions.login(email, password);
-        if (isLogged){
+        if (isLogged) {
             console.log('Login successful');
             navigate('/');
         } else {
@@ -22,17 +22,21 @@ export const Login = () => {
     };
 
     return (
-        <form className = "m-3" onSubmit={handleSubmit}>
+        <form className="m-3" onSubmit={handleSubmit}>
             <div className="mb-3">
                 <label htmlFor="inputEmail1" className="form-label">Email address</label>
                 <input type="email" className="form-control" id="inputEmail" placeholder="email@host.com" required onChange={(event) => { setEmail(event.target.value) }} />
             </div>
             <div className="mb-3">
                 <label htmlFor="inputPassword" className="form-label">Password</label>
-                <input type="password" className="form-control" id="inputPassword" required onChange={(event) => { setPassword(event.target.value) }}/>
+                <input type="password" className="form-control" id="inputPassword" required onChange={(event) => { setPassword(event.target.value) }} />
             </div>
             {loginError ? <div className="text-danger mb-3">Wrong email or password</div> : null}
             <button type="submit" className="btn btn-primary btn-lg">Log In</button>
+            <div className="mt-3">
+                <span>Don't have an account? </span>
+                <Link to="/signup" className="text-primary">Create one here</Link>
+            </div>
         </form>
-    )
+    );
 };

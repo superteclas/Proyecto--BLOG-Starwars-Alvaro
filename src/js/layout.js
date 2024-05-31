@@ -8,6 +8,7 @@ import {Login} from "./views/login";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
+import { Signup } from "./views/signup";
 
 
 
@@ -26,6 +27,7 @@ const Layout = () => {
 						<Route path="/" element={<Home />} />
 						<Route path="/details/:category/:uid" element={<Details />} />
 						<Route path="/login" element={<Login />} />
+						<Route path="/signup" element={<Signup />} />
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
 				</ScrollToTop>
