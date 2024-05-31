@@ -1,158 +1,218 @@
 const getState = ({ getStore, getActions, setStore }) => {
-    return {
-        store: {
-            favorites: [],
-            peoples: [],
-            planets: [],
-            vehicles: [],
-            info: [],
-            isLoggedIn: !!localStorage.getItem("token") // Añadido estado de autenticación
-        },
-        actions: {
-            getPeople: () => {
-                fetch("https://bug-free-space-garbanzo-5gq6rx76jqpwh4w67-3000.app.github.dev/people", {
-                    method: 'GET'
-                })
-                .then(res => res.json())
-                .then(data => setStore({ peoples: data.results }))
-                .catch(err => console.error(err));
-            },
-            getPlanets: () => {
-                fetch("https://bug-free-space-garbanzo-5gq6rx76jqpwh4w67-3000.app.github.dev/planets", {
-                    method: 'GET'
-                })
-                .then(res => res.json())
-                .then(data => setStore({ planets: data.results }))
-                .catch(err => console.error(err));
-            },
-            getVehicles: () => {
-                fetch("https://glowing-fishstick-7v9q5pjqjqj52wwg5-3000.app.github.dev/vehicles", {
-                    method: 'GET'
-                })
-                .then(res => res.json())
-                .then(data => setStore({ vehicles: data.results }))
-                .catch(err => console.error(err));
-            },
-            getInfo: (type, id) => {
-                fetch(`https://www.swapi.tech/api/${type}/${id}`, {
-                    method: 'GET'
-                })
-                .then(res => res.json())
-                .then(data => setStore({ info: data.result }))
-                .catch(err => console.error(err));
-            },
-            addFavorite: (favorite) => {
-                const store = getStore();
-                setStore({ favorites: [...store.favorites, favorite] });
-            },
-            deleteFavorite: (name) => {
-                const store = getStore();
-                setStore({ favorites: store.favorites.filter(item => item !== name) });
-            },
-            favoriteList: (name) => {
-                const store = getStore();
-                if (store.favorites.includes(name)) {
-                    getActions().deleteFavorite(name);
-                } else {
-                    getActions().addFavorite(name);
-                }
-            },
-            login: async (email, password) => {
+	let apiUrl = "https://swapi.tech/api/"
+	return {
+		store: {
+				characters: [],
+				planets: [],
+				vehicles: [],
+				details: {},
+				favorites: [ [], [], [] ],
+		},
+		actions: {
+			getCharacters: () => {
+				fetch(apiUrl + "people") 
+				.then((response) => response.json())
+				.then((data) => {
+					setStore({characters: data.results})
+				})
+				.catch((error) => console.log(error))
+			},
+			getPlanets: () => {
+				fetch(apiUrl + "planets") 
+				.then((response) => response.json())
+				.then((data) => {
+					setStore({planets: data.results})
+			   })
+				.catch((error) => console.log(error))
+			},
+			getVehicles: () => {
+				fetch(apiUrl + "vehicles") 
+				.then((response) => response.json())
+				.then((data) => {
+					setStore({vehicles: data.results})
+			   })
+				.catch((error) => console.log(error))
+			},
+			getDetails: (category, uid) => {
+				fetch(`https://swapi.tech/api/${category}/${uid}`) 
+				.then((response) => response.json())
+				.then((data) => setStore({
+					details: {
+						...data.result.properties,
+						description: data.result.description
+					}
+				}))
+				.catch((error) => console.log(error))
+			},
+			login: async (email, password) => {
                 try {
-                    let response = await fetch('https://bug-free-space-garbanzo-5gq6rx76jqpwh4w67-3000.app.github.dev/login', {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({ email, password })
-                    });
-                    let data = await response.json();
-                    if (response.ok) {
-                        localStorage.setItem("token", data.access_token);
-                        setStore({ isLoggedIn: true }); // Actualizar el estado de autenticación
-                        return true;
-                    } else {
-                        console.log("Login failed:", data.msg);
-                        return false;
-                    }
+					const response = await fetch("https://bug-free-space-garbanzo-5gq6rx76jqpwh4w67-3000.app.github.dev/login", {
+						method: 'POST',
+						headers:{
+							'Content-Type':'application/json'
+						},
+						body: JSON.stringify({
+							email:email,
+							password:password
+						})
+					});
+					if (response.status === 200) {
+						const data = await response.json();
+						localStorage.setItem("token", data.access_token);
+						return true;
+					} else {
+						return false;
+					}
                 } catch (error) {
-                    console.error("Login error:", error);
-                    return false;
+					return false;
                 }
             },
-            signup: async (email, password) => {
+			logOut: () => {
+				localStorage.removeItem('token');
+				setStore({favorites: [[], [], []]});
+			},
+			favorites: async () => {
+				const token = localStorage.getItem("token")
                 try {
-                    let response = await fetch('https://bug-free-space-garbanzo-5gq6rx76jqpwh4w67-3000.app.github.dev/signup', {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({ email, password })
-                    });
-                    let data = await response.json();
-                    if (response.ok) {
-                        localStorage.setItem("token", data.access_token);
-                        setStore({ isLoggedIn: true }); // Actualizar el estado de autenticación
-                        return true;
-                    } else {
-                        console.log("Signup failed:", data.msg);
-                        return false;
-                    }
+					const response = await fetch("https://bug-free-space-garbanzo-5gq6rx76jqpwh4w67-3000.app.github.dev/users/favorites", {
+						method: 'GET',
+						headers:{
+							'Content-Type':'application/json',
+							'Authorization': "Bearer " + token
+						},
+                	});
+					if (response.status === 200) {
+						const data = await response.json();
+						const { characters, planets, vehicles } = getStore(); 
+						const [ backendCharacters, backendPlanets, backendVehicles ] = data.results;
+						const filteredCharacters = characters.filter((character) => {
+							return backendCharacters.some((beCharacter) => character.name == beCharacter.character_id);
+						});
+						const filteredPlanets = planets.filter((planet) => {
+							return backendPlanets.some((bePlanet) => planet.name == bePlanet.planet_id);
+						});
+						const filteredVehicles = vehicles.filter((vehicle) => {
+							return backendVehicles.some((beVehicle) => vehicle.name == beVehicle.vehicle_id);
+						});
+						setStore({
+							favorites: [
+								filteredCharacters,
+								filteredPlanets,
+								filteredVehicles
+							] 
+						});
+					} else {
+						console.log("hello");
+						return [[], [], []];
+					}
                 } catch (error) {
-                    console.error("Signup error:", error);
-                    return false;
-                }
+					console.log("hello");
+                    return [[], [], []]; 
+                } 
             },
-            getFavorites: async () => {
-                let token = localStorage.getItem("token");
+			addFav: async (category, uid) => {
+				const token = localStorage.getItem("token")
                 try {
-                    let response = await fetch('https://bug-free-space-garbanzo-5gq6rx76jqpwh4w67-3000.app.github.dev/users/favorites', {
-                        method: "GET",
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Authorization": "Bearer " + token
-                        }
-                    });
-                    let data = await response.json();
-                    if (response.ok) {
-                        return data.results;
-                    } else {
-                        console.error("Error fetching favorites:", data.msg);
-                        return [];
-                    }
+					const response = await fetch(`https://bug-free-space-garbanzo-5gq6rx76jqpwh4w67-3000.app.github.dev/${category}/${uid}`, {
+						method: 'POST',
+						headers:{
+							'Content-Type':'application/json',
+							'Authorization': "Bearer " + token
+						},
+                	});
+				 	if (response.status === 201) {
+						if (category === "people") {
+							let listFav = getStore().favorites[0];
+							const allCharacters = getStore().characters;
+							const newFav = allCharacters.filter((character) => character.uid === uid);
+							const newListFav = listFav.concat(newFav) ;
+							setStore({
+								favorites: [
+									newListFav,
+									getStore().favorites[1],
+									getStore().favorites[2]
+								]
+							})
+						} else if (category === "planets") {
+							let listFav = getStore().favorites[1];
+							const allPlanets = getStore().planets;
+							const newFav = allPlanets.filter((planet) => planet.uid === uid);
+							const newListFav = listFav.concat(newFav) ;
+							setStore({
+								favorites: [
+									getStore().favorites[0],
+									newListFav,
+									getStore().favorites[2]
+								]
+							})
+						} else {
+							let listFav = getStore().favorites[2];
+							const allVehicles = getStore().vehicles;
+							const newFav = allVehicles.filter((vehicle) => vehicle.uid === uid);
+							const newListFav = listFav.concat(newFav) ;
+							setStore({
+								favorites: [
+									getStore().favorites[0],
+									getStore().favorites[1],
+									newListFav
+								]
+							})
+						}
+					} else {
+						return [];
+					}
                 } catch (error) {
-                    console.error("Error fetching favorites:", error);
-                    return [];
-                }
-            },
-            addFavoriteCharacter: async (id) => {
-                let token = localStorage.getItem("token");
+                    return []; 
+                } 
+			},
+			removeFav: async (category, uid) => {
+				const token = localStorage.getItem("token")
                 try {
-                    let response = await fetch(`https://bug-free-space-garbanzo-5gq6rx76jqpwh4w67-3000.app.github.dev/favorite/people/${id}`, {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Authorization": "Bearer " + token
-                        }
-                    });
-                    let data = await response.json();
-                    if (response.ok) {
-                        return true;
-                    } else {
-                        console.log("Add favorite character failed:", data.msg);
-                        return false;
-                    }
-                } catch (error) {
-                    console.error("Error adding favorite character:", error);
-                    return false;
-                }
-            },
-            logOut: () => {
-                localStorage.removeItem("token");
-                setStore({ favorites: [], isLoggedIn: false }); // Actualizar el estado de autenticación y limpiar favoritos
-            }
-        }
-    };
+					const response = await fetch(`https://bug-free-space-garbanzo-5gq6rx76jqpwh4w67-3000.app.github.dev/favorite/${category}/${uid}`, {
+						method: 'DELETE',
+						headers:{
+							'Content-Type':'application/json',
+							'Authorization': "Bearer " + token
+						},
+                	});
+					if (response.status === 200) {
+						if (category === "people") {
+							let listFav = getStore().favorites[0];
+							const newListFav = listFav.filter((character) => character.uid !== uid);
+							setStore({
+								favorites: [
+									newListFav,
+									getStore().favorites[1],
+									getStore().favorites[2]
+								]
+							})
+						} else if (category === "planets") {
+							let listFav = getStore().favorites[1];
+							const newListFav = listFav.filter((planet) => planet.uid !== uid);
+							setStore({
+								favorites: [
+									getStore().favorites[0],
+									newListFav,
+									getStore().favorites[2]
+								]
+							})
+						} else {
+							let listFav = getStore().favorites[2];
+							const newListFav = listFav.filter((vehicle) => vehicle.uid !== uid);
+							setStore({
+								favorites: [
+									getStore().favorites[0],
+									getStore().favorites[1],
+									newListFav
+								]
+							})
+						}
+					}
+				} catch (error) {
+					return []; 
+				} 
+			}
+		}
+	};
 };
-
 export default getState;

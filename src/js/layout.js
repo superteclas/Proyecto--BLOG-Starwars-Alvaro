@@ -1,64 +1,37 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
-import { Home } from "./views/home";
+import {Home } from "./views/home";
+import {Details} from "./views/details";
+import {Login} from "./views/login";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
-import { Detalles } from "./views/detalles";
-import { Login } from "./views/login";
-import { Signup } from "./views/signup";
-import Favorites from "./views/favorites";
 
+
+
+//create your first component
 const Layout = () => {
-    const basename = process.env.BASENAME || "";
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+	//the basename is used when your project is published in a subdirectory and not in the root of the domain
+	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
+	const basename = process.env.BASENAME || "";
 
-    useEffect(() => {
-        const token = localStorage.getItem("token");
-        setIsLoggedIn(!!token);
-    }, []);
-
-    const handleLogin = (token) => {
-        localStorage.setItem("token", token);
-        setIsLoggedIn(true);
-    };
-
-    const handleLogout = () => {
-        localStorage.removeItem("token");
-        setIsLoggedIn(false);
-    };
-
-    return (
-        <div>
-            <BrowserRouter basename={basename}>
-                <ScrollToTop>
-                    <ConditionalNavbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/login" element={<Login onLogin={handleLogin} />} />
-                        <Route path="/signup" element={<Signup />} />
-                        <Route path="/detalles/:type/:uid" element={<Detalles />} />
-                        <Route path="/favorites" element={<Favorites />} />
-                        <Route path="*" element={<h1>Not found!</h1>} />
-                    </Routes>
-                    <Footer />
-                </ScrollToTop>
-            </BrowserRouter>
-        </div>
-    );
-};
-
-const ConditionalNavbar = ({ isLoggedIn, handleLogout }) => {
-    const location = useLocation();
-
-    const pathsWithoutNavbar = ["/login", "/signup"];
-
-    return !pathsWithoutNavbar.includes(location.pathname) ? (
-        <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
-    ) : null;
+	return (
+		<div>
+			<BrowserRouter basename={basename}>
+				<ScrollToTop>
+					<Navbar />
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/details/:category/:uid" element={<Details />} />
+						<Route path="/login" element={<Login />} />
+						<Route path="*" element={<h1>Not found!</h1>} />
+					</Routes>
+				</ScrollToTop>
+			</BrowserRouter>
+		</div>
+	);
 };
 
 export default injectContext(Layout);

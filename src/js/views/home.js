@@ -1,38 +1,55 @@
-import React, { useEffect, useContext } from "react";
-import { Context } from "../store/appContext";
+import React, {useContext, useEffect} from "react";
+import { Card } from "../component/card.js";
+import { Context } from "../store/appContext.js";
 import "../../styles/home.css";
 
-import { CardPeople } from "../component/cardpeople.jsx";
-import { CardPlanets } from "../component/cardplanets.jsx";
+export const Home = () => {
+	const {store, actions} = useContext(Context);
+	
+	useEffect(() => {
+		actions.getCharacters();
+		actions.getPlanets();
+		actions.getVehicles();
+	}, []);
 
-export const Home = ({ isLoggedIn, handleLogout }) => {
-    const { store, actions } = useContext(Context);
+	useEffect(() => {
+		if (store.characters.length && store.planets.length && store.vehicles.length) {
+			actions.favorites();
+		} 
+	},[store.characters, store.planets, store.vehicles])
 
-    useEffect(() => {
-        actions.getPeople();
-        actions.getPlanets();
-        actions.getInfo();
-    }, [actions]);
-
-    return (
-        <div className="home">
-            <h2 className="tittles text-primary ms-5">Characters</h2>
-            <div className="cards d-flex mx-4" style={{ overflowX: "scroll" }}>
-                {store.peoples.map((people) => (
-                    <div className="text m-3" key={people.uid}>
-                        <CardPeople people={people} name={people.name} />
-                    </div>
-                ))}
-            </div>
-
-            <h2 className="tittles text-primary mt-3 ms-5">Planets</h2>
-            <div className="cards d-flex mx-4" style={{ overflowX: "scroll" }}>
-                {store.planets.map((planet) => (
-                    <div className="text m-3" key={planet.uid}>
-                        <CardPlanets planets={planet} name={planet.name} />
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
-};
+	return (
+		<>
+			<div>
+				<h1 className="text-danger ms-5">Characters</h1>
+				<div className="d-flex ms-4 flex-nowrap overflow-auto">
+					{store.characters.map((item, index) => {
+						return (
+							<Card key={index} item={item} category="people" />
+						);
+					})}
+				</div>
+			</div>
+			<div>
+				<h1 className="text-danger ms-5">Planets</h1>
+				<div className="d-flex ms-4 flex-nowrap overflow-auto">
+					{store.planets.map((item, index) => {
+						return (
+							<Card key={index} item={item} category="planets" />
+						);
+					})}
+				</div>
+			</div>
+			<div>
+				<h1 className="text-danger ms-5">Vehicles</h1>
+				<div className="d-flex ms-4 flex-nowrap overflow-auto">
+					{store.vehicles.map((item, index) => {
+						return (
+							<Card key={index} item={item} category="vehicles" />
+						);
+					})}
+				</div>
+			</div>
+		</>
+	);
+}

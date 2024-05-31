@@ -1,45 +1,38 @@
-import React, { useState, useContext } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React, {useContext, useState} from "react";
 import { Context } from "../store/appContext";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
-    const { actions } = useContext(Context);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loginError,setLoginError] = useState(false);
+    const {actions} = useContext(Context);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
-        const loggedIn = await actions.login(email, password); // Esperar a que la acción de inicio de sesión se complete
-        if (loggedIn) {
-            navigate("/favorites"); // Redirigir al usuario a la página de favoritos si el inicio de sesión fue exitoso
+        e.preventDefault();
+        const isLogged = await actions.login(email, password);
+        if (isLogged){
+            console.log('Login successful');
+            navigate('/');
         } else {
-            // Mostrar una alerta al usuario si el inicio de sesión falló
-            alert("Email o contraseña incorrectos. Por favor, inténtalo de nuevo.");
+            setLoginError(true);
+            console.log('Login failed');
         }
     };
 
     return (
-        <div className="container">
-            <h1 className="text-center mb-4" style={{ color: "white" }}>Login</h1>
-            <form onSubmit={handleSubmit} className="mx-auto" style={{ maxWidth: "400px" }}>
-                <div className="mb-3">
-                    <label htmlFor="exampleInputEmail" className="form-label">Email</label>
-                    <input type="email" className="form-control" id="exampleInputEmail" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} value={email} />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="exampleInputPassword" className="form-label">Password</label>
-                    <input type="password" className="form-control" id="exampleInputPassword" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password} />
-                </div>
-                <div className="text-center">
-                    <button type="submit" className="btn btn-primary">Login</button>
-                </div>
-            </form>
-            <div className="text-center mt-3">
-                <Link to="/signup" className="btn btn-link" style={{ color: "white" }}>
-                    Si no estás registrado, puedes registrarte aquí
-                </Link>
+        <form className = "m-3" onSubmit={handleSubmit}>
+            <div className="mb-3">
+                <label htmlFor="inputEmail1" className="form-label">Email address</label>
+                <input type="email" className="form-control" id="inputEmail" placeholder="email@host.com" required onChange={(event) => { setEmail(event.target.value) }} />
             </div>
-        </div>
-    );
+            <div className="mb-3">
+                <label htmlFor="inputPassword" className="form-label">Password</label>
+                <input type="password" className="form-control" id="inputPassword" required onChange={(event) => { setPassword(event.target.value) }}/>
+            </div>
+            {loginError ? <div className="text-danger mb-3">Wrong email or password</div> : null}
+            <button type="submit" className="btn btn-primary btn-lg">Log In</button>
+        </form>
+    )
 };

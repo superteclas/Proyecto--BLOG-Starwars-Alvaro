@@ -18,9 +18,9 @@ export const CardPeople = ({ people }) => {
         try {
             const success = await actions.addFavoriteCharacter(people.id);
             if (success) {
-                console.log("Favorito agregado correctamente");
+                alert("Favorito agregado correctamente");
             } else {
-                console.log("Error al agregar el favorito");
+                alert("Error al agregar el favorito");
             }
         } catch (error) {
             console.error("Error al agregar el favorito:", error);

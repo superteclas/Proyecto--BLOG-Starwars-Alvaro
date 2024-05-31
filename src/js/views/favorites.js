@@ -1,31 +1,16 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import { Context } from "../store/appContext"; 
 
 const Favorites = () => {
     const { store, actions } = useContext(Context); 
-    const [hasReloaded, setHasReloaded] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+    // Obtener favoritos cuando el componente se monta si el usuario está logueado
     useEffect(() => {
         const token = localStorage.getItem("token");
-        setIsLoggedIn(!!token);
-    }, []);
-
-    useEffect(() => {
-        const reloaded = localStorage.getItem("hasReloaded");
-
-        if (!isLoggedIn && !reloaded) {
-            localStorage.setItem("hasReloaded", "true");
-            setHasReloaded(true);
-            window.location.reload();
-        }
-    }, [isLoggedIn]);
-
-    useEffect(() => {
-        if (isLoggedIn) {
+        if (token) {
             actions.getFavorites();
         }
-    }, [isLoggedIn, actions]);
+    }, [actions]);
 
     return (
         <div>

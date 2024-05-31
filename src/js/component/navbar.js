@@ -1,52 +1,74 @@
-import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, {useContext} from "react";
 import { Context } from "../store/appContext";
+import { Link, useNavigate } from "react-router-dom";
+import "../../styles/navbar.css";
 
 export const Navbar = () => {
-    const { store, actions } = useContext(Context);
-    const { favorites, isLoggedIn } = store;
-    const navigate = useNavigate();
+	const {store, actions}= useContext(Context);
+	const navigate = useNavigate();
+	const token = localStorage.getItem("token")
 
-    const handleRemoveFavorite = (favoriteName, event) => {
-        event.stopPropagation();
-        actions.deleteFavorite(favoriteName);
-    };
+	const handleLogOut= () => {
+		actions.logOut();
+		navigate('/')
+	};
 
-    const handleLogOut = () => {
-        actions.logOut();
-        navigate('/');
-    };
+	const removeFavorite = (indexCat, uid) => {
+		let category;
+		if (indexCat === 0) {
+			category = "people";
+		} else if (indexCat === 1) {
+			category = "planets";
+		} else {
+			category = "vehicles";
+		}
+		actions.removeFav(category, uid);
+	};
 
-    return (
-        <nav className="navbar navbar-light bg-dark mb-3" style={{ width: '100%' }}>
-            <Link to="/" className="navbar-brand ml-0 h1" style={{ width: '7%', marginLeft: '7em' }}>
-                <img src="https://1000logos.net/wp-content/uploads/2017/06/Star-Wars-Logo-1.png" alt="Logo" style={{ width: '100%', height: 'auto', filter: 'invert(100%)' }} />
-            </Link>
-            <div className="dropdown" style={{ marginRight: '1em' }}>
-                <button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                    Favoritos ({favorites.length})
-                </button>
-                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <li className="dropdown-header">Favoritos</li>
-                    {favorites.length > 0 ? (
-                        favorites.map((favorite, index) => (
-                            <li key={index} className="d-flex align-items-center">
-                                <span className="dropdown-item mr-auto">{favorite}</span>
-                                <i className="fa fa-trash ml-2 text-black" onClick={(event) => handleRemoveFavorite(favorite, event)}></i>
-                            </li>
-                        ))
-                    ) : (
-                        <li>
-                            <span className="dropdown-item">No hay favoritos</span>
-                        </li>
-                    )}
-                </ul>
-            </div>
-            {isLoggedIn ? (
-                <button className="btn btn-primary ml-3" onClick={handleLogOut} style={{ marginRight: '1em' }}>Cerrar sesión</button>
-            ) : (
-                <Link to="/login" className="btn btn-primary ml-3" style={{ marginRight: '1em' }}>Iniciar sesión</Link>
-            )}
-        </nav>
-    );
+	return (
+		<nav className="navbar navbar-expand-lg bg-light">			
+			<div className="container-fluid">
+				<Link to="/">
+					<img className="navbar-brand text-black ms-5 logostarwars" src="https://logos-marcas.com/wp-content/uploads/2020/11/Star-Wars-Logo.png" />
+				</Link>
+				{token ?
+					<>
+						<div className="nav dropdown me-5">
+							<a className=" d-flex nav-link dropdown-toggle text-white bg-primary rounded align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+								Favorites
+								<span className="bg-secondary px-2 ms-1" style={{borderRadius:"30px"}}>{store.favorites[0].length + store.favorites[1].length + store.favorites[2].length}</span>
+							</a>
+							<ul className="dropdown-menu">
+								{store.favorites[0].length === 0 && store.favorites[1].length === 0 && store.favorites[2].length === 0
+									? <li className="text-center">(empty)</li>
+									: store.favorites.map((elem, indexCat) => (
+										(elem.map((item, index) => (
+											<li key={index} className="d-flex justify-content-between text-primary">
+												{item.name}
+												<button onClick={() => removeFavorite(indexCat, item.uid)} className="btn p-0 px-1">
+													<i className="fas fa-trash"></i>
+												</button>
+											</li>
+										)))
+									))
+								}
+							</ul>
+						</div>
+						<div>
+							<button className="btn-lg" onClick={handleLogOut}>Log Out</button>
+						</div>
+					</>
+					: (
+						<Link to="/login">
+							<div>
+								<button className="btn-lg">
+									Log In
+								</button>
+							</div> 
+						</Link>
+					)
+				}	
+			</div>
+		</nav>
+	);
 };
