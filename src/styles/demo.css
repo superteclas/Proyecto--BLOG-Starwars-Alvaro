@@ -1,0 +1,9 @@
+.container-demo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* O ajusta la altura según tus necesidades */
+    width: 100%; /* O ajusta el ancho según tus necesidades */
+    margin-top: 1em;
+}

@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Redirect, Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Vistaprivada } from "../component/Vistaprivada.js";
+import "../../styles/demo.css";
 
 export const Demo = () => {
     const { store } = useContext(Context);
@@ -17,9 +18,8 @@ export const Demo = () => {
     }
 
     return (
-        <div className="container">
-            <h1>Bienvenido a la página de demostración</h1>
-            <p>Esta es la página principal de la demostración.</p>
+        <div className="container-demo">
+    
 
             {/* Agregamos el componente Vistaprivada */}
             <Vistaprivada />
