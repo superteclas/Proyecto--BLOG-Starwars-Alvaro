@@ -77,32 +77,34 @@ const getState = ({ getStore, getActions, setStore }) => {
                 setStore({ favorites: [[], [], []] });
             },
             favorites: async () => {
-                const token = localStorage.getItem("token");
-                const user_id = 1; // Change this to the actual user_id logic
-                try {
-                    const response = await fetch(`${backendUrl}/user/${user_id}/favorites`, {
-                        method: "GET",
-                        headers: {
-                            "Content-Type": "application/json",
-                            Authorization: "Bearer " + token,
-                        },
-                    });
-                    if (response.status === 200) {
-                        const data = await response.json();
-                        const results = data.results;
-                        setStore({
-                            favorites: [results.characters, results.planets, results.vehicles],
-                        });
-                    } else {
-                        setStore({ favorites: [[], [], []] });
-                    }
-                } catch (error) {
-                    setStore({ favorites: [[], [], []] });
-                }
-            },
+				const token = localStorage.getItem("token");
+				const user_id = getUserId(); // Supongamos que hay una función getUserId() que obtiene el user_id del usuario actual
+			
+				try {
+					const response = await fetch(`${backendUrl}/user/${user_id}/favorites`, {
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: "Bearer " + token,
+						},
+					});
+			
+					if (response.status === 200) {
+						const data = await response.json();
+						const results = data.results;
+						setStore({
+							favorites: [results.characters, results.planets, results.vehicles],
+						});
+					} else {
+						setStore({ favorites: [[], [], []] });
+					}
+				} catch (error) {
+					setStore({ favorites: [[], [], []] });
+				}
+			},
             addFav: async (category, uid) => {
                 const token = localStorage.getItem("token");
-                const user_id = 1; // Change this to the actual user_id logic
+                
                 try {
                     const response = await fetch(`${backendUrl}/favorite/${category}/${uid}`, {
                         method: "POST",
@@ -120,7 +122,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
             removeFav: async (category, uid) => {
                 const token = localStorage.getItem("token");
-                const user_id = 1; // Change this to the actual user_id logic
+               
                 try {
                     const response = await fetch(`${backendUrl}/favorite/${category}/${uid}`, {
                         method: "DELETE",
