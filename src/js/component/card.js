@@ -1,28 +1,39 @@
-import React, {useContext} from "react";
-import { Context } from "../store/appContext";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/card.css";
 
 export const Card = (props) => {
-    const {store, actions}= useContext(Context);
     const token = localStorage.getItem("token");
+    const [favorites, setFavorites] = useState([[], [], []]);
 
-    let isFavorite = false;
-    if (store.favorites.length !== 0) {
-        isFavorite = [
-            ...store.favorites[0],
-            ...store.favorites[1],
-            ...store.favorites[2],
-        ].some((favorite) => favorite.name === props.item.name);
-    }
+    useEffect(() => {
+        const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [[], [], []];
+        setFavorites(storedFavorites);
+    }, []);
+
+    const updateFavorites = (newFavorites) => {
+        localStorage.setItem("favorites", JSON.stringify(newFavorites));
+        setFavorites(newFavorites);
+    };
+
+    const isFavorite = [
+        ...(favorites[0] || []),
+        ...(favorites[1] || []),
+        ...(favorites[2] || [])
+    ].some((favorite) => favorite.name === props.item.name);
 
     const addOrRemove = () => {
-        if (!isFavorite) {
-            actions.addFav(props.category, props.item.uid)
+        const categoryIndex = props.category === "people" ? 0 : props.category === "planets" ? 1 : 2;
+        let newFavorites = [...favorites];
+
+        if (isFavorite) {
+            newFavorites[categoryIndex] = newFavorites[categoryIndex].filter((fav) => fav.uid !== props.item.uid);
         } else {
-            actions.removeFav(props.category, props.item.uid)
+            newFavorites[categoryIndex].push(props.item);
         }
-    }
+
+        updateFavorites(newFavorites);
+    };
 
     const category = props.category === "people" ? "characters" :
                      props.category === "planets" ? "planets" :
@@ -30,31 +41,31 @@ export const Card = (props) => {
     let noImageUrl = "";
 
     if (props.category === "planets" && props.item.uid === "1") {
-        noImageUrl = "https://starwars-visualguide.com/assets/img/big-placeholder.jpg"
-        }
+        noImageUrl = "https://starwars-visualguide.com/assets/img/big-placeholder.jpg";
+    }
 
-	return (
-        <div className="card m-3"style={{minWidth:"300px"}}>
+    return (
+        <div className="card m-3" style={{ minWidth: "300px" }}>
             <img className="image"
-				src={noImageUrl !== "" ? noImageUrl : `https://starwars-visualguide.com/assets/img/${category}/${props.item.uid}.jpg`}
-				alt="image"
-			/>
+                src={noImageUrl !== "" ? noImageUrl : `https://starwars-visualguide.com/assets/img/${category}/${props.item.uid}.jpg`}
+                alt="image"
+            />
             <div className="card-body bg-light">
                 <h5 className="card-title">{props.item.name}</h5>
                 <p className="card-text mb-0"> {
-                    props.category == "people" ? "Gender: " : 
-                    props.category == "planets" ? "Population: " : 
-                    props.category == "vehicles" ? "Cargo Capacity: " : "" 
-                 }</p>
+                    props.category === "people" ? "Gender: " :
+                    props.category === "planets" ? "Population: " :
+                    props.category === "vehicles" ? "Cargo Capacity: " : ""
+                }</p>
                 <p className="card-text mb-0"> {
-                    props.category == "people" ? "Hair color: " : 
-                    props.category == "planets" ? "Terrain: " : 
-                    props.category == "vehicles" ? "Consumables: " : ""    
+                    props.category === "people" ? "Hair color: " :
+                    props.category === "planets" ? "Terrain: " :
+                    props.category === "vehicles" ? "Consumables: " : ""
                 }</p>
                 <p className="card-text"> {
-                    props.category == "people" ? "Eye-Color: " : 
-                    props.category == "planets" ? "Climate: " : 
-                    props.category == "vehicles" ? "Crew: " : "" 
+                    props.category === "people" ? "Eye-Color: " :
+                    props.category === "planets" ? "Climate: " :
+                    props.category === "vehicles" ? "Crew: " : ""
                 }</p>
                 <div className="d-flex justify-content-between">
                     <Link to={`/details/${props.category}/${props.item.uid}`}>
@@ -64,10 +75,10 @@ export const Card = (props) => {
                         <button className={`corazon btn btn-outline-warning`} onClick={addOrRemove}>
                             <i className={`fa-heart ${isFavorite ? "fas text-warning" : "far"}`}></i>
                         </button>
-                    : null
+                        : null
                     }
                 </div>
             </div>
-        </div>	
-	);
+        </div>
+    );
 };
