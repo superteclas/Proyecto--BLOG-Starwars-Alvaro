@@ -9,6 +9,7 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Signup } from "./views/signup";
+import { Demo } from "./views/demo";
 
 
 
@@ -28,6 +29,7 @@ const Layout = () => {
 						<Route path="/details/:category/:uid" element={<Details />} />
 						<Route path="/login" element={<Login />} />
 						<Route path="/signup" element={<Signup />} />
+						<Route path="/demo" element={<Demo />} />
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
 				</ScrollToTop>

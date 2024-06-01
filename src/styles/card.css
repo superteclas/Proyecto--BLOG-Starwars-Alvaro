@@ -1,9 +1,15 @@
-.corazon:hover i{
-    color:black !important;
+.card-container {
+    display: flex;
+    justify-content: center;
 }
 
-.image {
-    height: 275px;
-    object-fit: cover;
-    object-position: top;
+.card {
+    width: 300px;
+    margin: 10px;
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+    }
 }
