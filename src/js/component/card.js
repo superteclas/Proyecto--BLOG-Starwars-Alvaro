@@ -1,38 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/card.css";
+import { Context } from "../store/appContext";
 
 export const Card = (props) => {
+    const { actions } = useContext(Context);
+    const [isFavorite, setIsFavorite] = useState(false);
     const token = localStorage.getItem("token");
-    const [favorites, setFavorites] = useState([[], [], []]);
 
     useEffect(() => {
         const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [[], [], []];
-        setFavorites(storedFavorites);
-    }, []);
-
-    const updateFavorites = (newFavorites) => {
-        localStorage.setItem("favorites", JSON.stringify(newFavorites));
-        setFavorites(newFavorites);
-    };
-
-    const isFavorite = [
-        ...(favorites[0] || []),
-        ...(favorites[1] || []),
-        ...(favorites[2] || [])
-    ].some((favorite) => favorite.name === props.item.name);
-
-    const addOrRemove = () => {
         const categoryIndex = props.category === "people" ? 0 : props.category === "planets" ? 1 : 2;
-        let newFavorites = [...favorites];
+        setIsFavorite(storedFavorites[categoryIndex].some((favorite) => favorite.uid === props.item.uid));
+    }, [props.category, props.item.uid]);
 
+    const addOrRemove = async () => {
+        const categoryIndex = props.category === "people" ? 0 : props.category === "planets" ? 1 : 2;
+        const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [[], [], []];
+        let newFavorites = [...storedFavorites];
+        
         if (isFavorite) {
             newFavorites[categoryIndex] = newFavorites[categoryIndex].filter((fav) => fav.uid !== props.item.uid);
         } else {
             newFavorites[categoryIndex].push(props.item);
         }
 
-        updateFavorites(newFavorites);
+        localStorage.setItem("favorites", JSON.stringify(newFavorites));
+        setIsFavorite(!isFavorite);
+        await actions.favorites();
     };
 
     const category = props.category === "people" ? "characters" :
@@ -71,11 +66,10 @@ export const Card = (props) => {
                     <Link to={`/details/${props.category}/${props.item.uid}`}>
                         <button className="btn text-primary border-primary">Learn More!</button>
                     </Link>
-                    {token ?
-                        <button className={`corazon btn btn-outline-warning`} onClick={addOrRemove}>
+                    {token &&
+                        <button className={`btn btn-outline-warning`} onClick={addOrRemove}>
                             <i className={`fa-heart ${isFavorite ? "fas text-warning" : "far"}`}></i>
                         </button>
-                        : null
                     }
                 </div>
             </div>

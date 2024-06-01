@@ -1,24 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/navbar.css";
+import { Context } from "../store/appContext";  
 
-export const Navbar = ({ actions }) => {
+export const Navbar = () => {
+    const { actions } = useContext(Context);
     const [favorites, setFavorites] = useState([[], [], []]);
     const navigate = useNavigate();
     const token = localStorage.getItem("token");
 
     useEffect(() => {
-        // Obtener favoritos del localStorage al cargar el componente
         const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [[], [], []];
         setFavorites(storedFavorites);
     }, []);
-
-    // Función para manejar el cierre del dropdown
-    const handleDropdownClose = () => {
-        // Actualizar favoritos en el estado local
-        const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [[], [], []];
-        setFavorites(storedFavorites);
-    };
 
     const handleLogOut = () => {
         localStorage.removeItem("token");
@@ -27,10 +21,11 @@ export const Navbar = ({ actions }) => {
     };
 
     const removeFavorite = async (indexCat, uid) => {
-        // Eliminar favorito en el backend
         try {
-            await actions.removeFav(indexCat === 0 ? "people" : indexCat === 1 ? "planets" : "vehicles", uid);
-            // Actualizar favoritos en el estado local y obtener los últimos favoritos del backend
+            const newFavorites = [...favorites];
+            newFavorites[indexCat] = newFavorites[indexCat].filter(item => item.uid !== uid);
+            localStorage.setItem("favorites", JSON.stringify(newFavorites));
+            setFavorites(newFavorites);
             await actions.favorites();
         } catch (error) {
             console.log(error);
@@ -45,7 +40,7 @@ export const Navbar = ({ actions }) => {
                 </Link>
                 {token ?
                     <>
-                        <div className="nav dropdown me-5" onClick={handleDropdownClose}>
+                        <div className="nav dropdown me-5">
                             <a className="d-flex nav-link dropdown-toggle text-white bg-primary rounded align-items-center" href="#" role="button" data-bs-toggle="dropdown">
                                 Favorites
                                 <span className="bg-secondary px-2 ms-1" style={{ borderRadius: "30px" }}>
@@ -55,15 +50,13 @@ export const Navbar = ({ actions }) => {
                             <ul className="dropdown-menu">
                                 {favorites[0].length === 0 && favorites[1].length === 0 && favorites[2].length === 0
                                     ? <li className="text-center">(empty)</li>
-                                    : favorites.map((elem, indexCat) => (
-                                        elem.map((item, index) => (
-                                            <li key={index} className="d-flex justify-content-between text-primary">
-                                                {item.name}
-                                                <button onClick={() => removeFavorite(indexCat, item.uid)} className="btn p-0 px-1">
-                                                    <i className="fas fa-trash"></i>
-                                                </button>
-                                            </li>
-                                        ))
+                                    : favorites.flat().map((item, index) => (
+                                        <li key={index} className="d-flex justify-content-between text-primary">
+                                            {item.name}
+                                            <button onClick={() => removeFavorite(index, item.uid)} className="btn p-0 px-1">
+                                                <i className="fas fa-trash"></i>
+                                            </button>
+                                        </li>
                                     ))
                                 }
                             </ul>
