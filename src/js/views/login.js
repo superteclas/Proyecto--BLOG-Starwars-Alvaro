@@ -13,7 +13,7 @@ export const Login = () => {
         e.preventDefault();
         const isLogged = await actions.login(email, password);
         if (isLogged) {
-            console.log('Login successful');
+            alert('Bienvenid@');
             navigate('/');
         } else {
             setLoginError(true);

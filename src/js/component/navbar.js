@@ -3,22 +3,24 @@ import { Link } from "react-router-dom";
 import "../../styles/navbar.css";
 
 export const Navbar = () => {
+   
     const token = localStorage.getItem("token");
 
+    
     const handleLogOut = () => {
+       
         localStorage.removeItem("token");
-        window.location.reload(); 
+         window.location.reload(); 
     };
 
     return (
         <nav className="navbar navbar-expand-lg bg-light">
             <div className="container-fluid">
                 <Link to="/">
-                    <img className="navbar-brand text-black ms-5 logostarwars" src="https://logos-marcas.com/wp-content/uploads/2020/11/Star-Wars-Logo.png" />
+                    <img className="navbar-brand text-black ms-5 logostarwars" src="https://logos-marcas.com/wp-content/uploads/2020/11/Star-Wars-Logo.png" alt="Star Wars Logo" />
                 </Link>
                 {token ?
                     <>
-                        
                         <Link to="/private">
                             <button className="btn btn-lg text-white bg-primary rounded">
                                 Tus Favoritos

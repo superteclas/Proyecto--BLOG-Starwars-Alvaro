@@ -13,11 +13,11 @@ export const Signup = () => {
         e.preventDefault();
         const success = await actions.signup(email, password);
         if (success) {
-            console.log('Signup successful');
+            alert('Signup successful');
             navigate('/');
         } else {
             setSignupError(true);
-            console.log('Signup failed');
+            alert('Signup failed');
         }
     };
 

@@ -33,14 +33,16 @@ const FavoritesDropdown = () => {
             <ul className="dropdown-menu">
                 {favorites[0].length === 0 && favorites[1].length === 0 && favorites[2].length === 0
                     ? <li className="text-center">(empty)</li>
-                    : favorites.flat().map((item, index) => (
-                        <li key={index} className="d-flex justify-content-between text-primary">
-                            {item.name}
-                            <button onClick={() => removeFavorite(index, item.uid)} className="btn p-0 px-1">
-                                <i className="fas fa-trash"></i>
-                            </button>
-                        </li>
-                    ))
+                    : favorites.flatMap((category, indexCat) => 
+                        category.map((item, index) => (
+                            <li key={`${indexCat}-${index}`} className="d-flex justify-content-between text-primary">
+                                {item.name}
+                                <button onClick={() => removeFavorite(indexCat, item.uid)} className="btn p-0 px-1">
+                                    <i className="fas fa-trash"></i>
+                                </button>
+                            </li>
+                        ))
+                    )
                 }
             </ul>
         </div>
