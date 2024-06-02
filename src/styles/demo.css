@@ -3,7 +3,18 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* O ajusta la altura según tus necesidades */
-    width: 100%; /* O ajusta el ancho según tus necesidades */
+  
     margin-top: 1em;
+}
+
+.container-dem {
+    margin-left: 5em;
+}
+
+.titulo-private {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 5em;
+    margin-left: 2em;
 }

@@ -11,10 +11,10 @@ export const Vistaprivada = () => {
 
     return (
         <div className="container-demo">
-            <h2 className="mb-4">Tus favoritos</h2>
-            {/* Agregar el componente FavoritesDropdown */}
+            <h2 className="titulo-private">Tus favoritos</h2>
+            <div className="container-dem">
             <FavoritesDropdown />
-            
+            </div>
         </div>
     );
 };
