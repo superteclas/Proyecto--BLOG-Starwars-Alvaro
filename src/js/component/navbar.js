@@ -7,7 +7,7 @@ export const Navbar = () => {
 
     const handleLogOut = () => {
         localStorage.removeItem("token");
-        window.location.reload(); // Recargar la página para redirigir a la página de inicio
+        window.location.reload(); 
     };
 
     return (
@@ -18,7 +18,7 @@ export const Navbar = () => {
                 </Link>
                 {token ?
                     <>
-                        {/* Enlace a la vista privada de favoritos */}
+                        
                         <Link to="/private">
                             <button className="btn btn-lg text-white bg-primary rounded">
                                 Tus Favoritos

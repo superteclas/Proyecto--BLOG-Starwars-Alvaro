@@ -23,7 +23,7 @@ const FavoritesDropdown = () => {
     };
 
     return (
-        <div className="nav dropdown me-5">
+        <div className="nav-dropdown me-5">
             <a className="d-flex nav-link dropdown-toggle text-white bg-primary rounded align-items-center" href="#" role="button" data-bs-toggle="dropdown">
                 Favorites
                 <span className="bg-secondary px-2 ms-1" style={{ borderRadius: "30px" }}>

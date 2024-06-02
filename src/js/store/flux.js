@@ -68,7 +68,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                         const data = await response.json();
                         localStorage.setItem("token", data.access_token);
                         console.log(data.access_token);
-                        localStorage.setItem("user_id", data.user_id); // Almacenar user_id
+                        localStorage.setItem("user_id", data.user_id); 
                         getActions().favorites();
                         return true;
                     } else {

@@ -21,7 +21,7 @@ export const Home = () => {
 	return (
 		<>
 			<div>
-				<h1 className="text-danger ms-5">Characters</h1>
+				<h1 className=" ms-5">Characters</h1>
 				<div className="d-flex ms-4 flex-nowrap overflow-auto">
 					{store.characters.map((item, index) => {
 						return (
@@ -31,7 +31,7 @@ export const Home = () => {
 				</div>
 			</div>
 			<div>
-				<h1 className="text-danger ms-5">Planets</h1>
+				<h1 className=" ms-5">Planets</h1>
 				<div className="d-flex ms-4 flex-nowrap overflow-auto">
 					{store.planets.map((item, index) => {
 						return (
@@ -41,7 +41,7 @@ export const Home = () => {
 				</div>
 			</div>
 			<div>
-				<h1 className="text-danger ms-5">Vehicles</h1>
+				<h1 className=" ms-5">Vehicles</h1>
 				<div className="d-flex ms-4 flex-nowrap overflow-auto">
 					{store.vehicles.map((item, index) => {
 						return (

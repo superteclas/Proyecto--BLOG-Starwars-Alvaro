@@ -10,7 +10,7 @@ export const Demo = () => {
 
     if (!token) {
         return (
-            <div className="container">
+            <div className="container-out">
                 <h1>Para acceder a esta página necesitas estar logeado</h1>
                 <p>Por favor, <Link to="/login">inicia sesión</Link> para acceder al contenido.</p>
             </div>
@@ -21,7 +21,7 @@ export const Demo = () => {
         <div className="container-demo">
     
 
-            {/* Agregamos el componente Vistaprivada */}
+            
             <Vistaprivada />
         </div>
     );
