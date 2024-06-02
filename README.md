@@ -2,7 +2,7 @@
 
 
 <p align="center">
-<a href="https://github.com/superteclas/Proyecto-Api-Star-Wars-Rest"></a>
+<a href="https://github.com/superteclas/Proyecto-Api-Star-Wars-Rest">ENLACE A LA API DEL PROYECTO</a>
 </p>
 
 
