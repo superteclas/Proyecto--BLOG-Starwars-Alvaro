@@ -47,21 +47,7 @@ export const Card = (props) => {
             />
             <div className="card-body bg-light">
                 <h5 className="card-title">{props.item.name}</h5>
-                <p className="card-text mb-0"> {
-                    props.category === "people" ? "Gender: " :
-                    props.category === "planets" ? "Population: " :
-                    props.category === "vehicles" ? "Cargo Capacity: " : ""
-                }</p>
-                <p className="card-text mb-0"> {
-                    props.category === "people" ? "Hair color: " :
-                    props.category === "planets" ? "Terrain: " :
-                    props.category === "vehicles" ? "Consumables: " : ""
-                }</p>
-                <p className="card-text"> {
-                    props.category === "people" ? "Eye-Color: " :
-                    props.category === "planets" ? "Climate: " :
-                    props.category === "vehicles" ? "Crew: " : ""
-                }</p>
+           
                 <div className="d-flex justify-content-between">
                     <Link to={`/details/${props.category}/${props.item.uid}`}>
                         <button className="btn text-primary border-primary">Learn More!</button>
