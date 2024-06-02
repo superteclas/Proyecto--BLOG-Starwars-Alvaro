@@ -67,8 +67,8 @@ export const Card = (props) => {
                         <button className="btn text-primary border-primary">Learn More!</button>
                     </Link>
                     {token &&
-                        <button className={`btn btn-outline-warning`} onClick={addOrRemove}>
-                            <i className={`fa-heart ${isFavorite ? "fas text-warning" : "far"}`}></i>
+                        <button className={`btn btn-outline-danger`} onClick={addOrRemove}>
+                            <i className={`fa-heart ${isFavorite ? "fas text-danger" : "far"}`}></i>
                         </button>
                     }
                 </div>

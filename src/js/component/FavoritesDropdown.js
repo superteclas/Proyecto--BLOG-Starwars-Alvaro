@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
+import "../../styles/favoritesdrop.css";
 
 const FavoritesDropdown = () => {
     const { actions } = useContext(Context);

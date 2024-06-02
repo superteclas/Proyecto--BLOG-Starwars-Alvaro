@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link, useNavigate } from "react-router-dom";
+import "../../styles/login.css";
 
 export const Login = () => {
     const [email, setEmail] = useState("");
@@ -22,21 +23,24 @@ export const Login = () => {
     };
 
     return (
-        <form className="m-3" onSubmit={handleSubmit}>
-            <div className="mb-3">
-                <label htmlFor="inputEmail1" className="form-label">Email address</label>
-                <input type="email" className="form-control" id="inputEmail" placeholder="email@host.com" required onChange={(event) => { setEmail(event.target.value) }} />
-            </div>
-            <div className="mb-3">
-                <label htmlFor="inputPassword" className="form-label">Password</label>
-                <input type="password" className="form-control" id="inputPassword" required onChange={(event) => { setPassword(event.target.value) }} />
-            </div>
-            {loginError ? <div className="text-danger mb-3">Wrong email or password</div> : null}
-            <button type="submit" className="btn btn-primary btn-lg">Log In</button>
-            <div className="mt-3">
-                <span>Don't have an account? </span>
-                <Link to="/signup" className="text-primary">Create one here</Link>
-            </div>
-        </form>
+        <div className="login-container">
+            <form className="login-form" onSubmit={handleSubmit}>
+                <h3 className="text-center">Login</h3>
+                <div className="mb-3">
+                    <label htmlFor="inputEmail1" className="form-label">Email address</label>
+                    <input type="email" className="form-control" id="inputEmail" placeholder="email@host.com" required onChange={(event) => { setEmail(event.target.value) }} />
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="inputPassword" className="form-label">Password</label>
+                    <input type="password" className="form-control" id="inputPassword" required onChange={(event) => { setPassword(event.target.value) }} />
+                </div>
+                {loginError ? <div className="text-danger mb-3">Wrong email or password</div> : null}
+                <button type="submit" className="btn btn-primary btn-lg w-100">Log In</button>
+                <div className="mt-3 text-center">
+                    <span>Don't have an account? </span>
+                    <Link to="/signup" className="text-primary">Create one here</Link>
+                </div>
+            </form>
+        </div>
     );
 };

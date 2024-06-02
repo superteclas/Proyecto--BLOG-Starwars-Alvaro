@@ -1,0 +1,27 @@
+.nav-dropdown {
+    font-size: 18px;
+    margin-right: 15px;
+    position: relative;
+}
+
+.dropdown-menu {
+    width: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dropdown-menu li {
+    padding: 10px 20px;
+}
+
+.dropdown-menu li:hover {
+    background-color: #f0f0f0;
+}
+
+.dropdown-menu .btn {
+    font-size: 18px;
+}
