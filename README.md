@@ -4,24 +4,32 @@
 Este proyecto es un blog de Star Wars desarrollado como parte del Bootcamp de 4Geeks Academy. El propósito es proporcionar información y noticias sobre el universo de Star Wars.
 
 VISTA HOME sin autentificar:
+
 ![1](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/18da6f2f-7f5c-4702-8f99-db84efbdf5a7)
+
 VISTA DETALLES:
+
 ![2](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/9d5c17e6-b9d8-4ea4-acd2-af2f01f36260)
+
 SIGNUP
+
 ![3](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/595918f1-6e6b-4ed0-875e-54edd8880a91)
+
 VISTA HOME autentificado:
+
 ![4](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/49b145fc-e496-4941-b6f7-72ef5d85fe7c)
+
 VISTA LOGIN
+
 ![5](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/2c35e93a-3fa9-49d1-b8fc-353f3bfdef1d)
+
 AGREGANDO FAVORITOS VISTA HOME
+
 ![6](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/d674fd0c-cd8b-475c-9329-b05d7e63aec1)
+
 VISTA PRIVADA FAVORITOS
+
 ![7](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/a086c828-ad37-4014-92ad-9dd8b594a113)
-
-
-
-
-
 
 
 
