@@ -3,12 +3,25 @@
 
 Este proyecto es un blog de Star Wars desarrollado como parte del Bootcamp de 4Geeks Academy. El propósito es proporcionar información y noticias sobre el universo de Star Wars.
 
-![Captura de Pantalla 2024-06-17 a las 10 08 23](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/787a7049-d4a8-4f05-823c-5bc7fd597108)![Captura de Pantalla 2024-06-17 a las 10 13 18](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/a2e2b3a1-e274-4fa9-a31b-92a934aa970d)
-![Captura de Pantalla 2024-06-17 a las 10 13 10](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/5a575e4e-34cf-4ca7-9f89-2df60c6b96af)
-![Captura de Pantalla 2024-06-17 a las 10 12 51](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/85af4043-10cb-4e9b-9612-032c481d0764)
-![Captura de Pantalla 2024-06-17 a las 10 12 04](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/4d3f848d-6e0c-4a31-89c7-8930e29eff46)
-![Captura de Pantalla 2024-06-17 a las 10 11 47](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/535c055e-ac36-480a-b570-e683194119c8)
-![Captura de Pantalla 2024-06-17 a las 10 08 40](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/2dc6ad29-21f5-4429-9b94-36e76af9027f)
+VISTA HOME sin autentificar:
+![1](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/18da6f2f-7f5c-4702-8f99-db84efbdf5a7)
+VISTA DETALLES:
+![2](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/9d5c17e6-b9d8-4ea4-acd2-af2f01f36260)
+SIGNUP
+![3](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/595918f1-6e6b-4ed0-875e-54edd8880a91)
+VISTA HOME autentificado:
+![4](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/49b145fc-e496-4941-b6f7-72ef5d85fe7c)
+VISTA LOGIN
+![5](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/2c35e93a-3fa9-49d1-b8fc-353f3bfdef1d)
+AGREGANDO FAVORITOS VISTA HOME
+![6](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/d674fd0c-cd8b-475c-9329-b05d7e63aec1)
+VISTA PRIVADA FAVORITOS
+![7](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/a086c828-ad37-4014-92ad-9dd8b594a113)
+
+
+
+
+
 
 
 
