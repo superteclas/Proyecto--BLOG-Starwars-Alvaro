@@ -1,10 +1,16 @@
-Aquí tienes el README actualizado para el proyecto "Proyecto Star Wars - Frontend":
-
----
 
 # Proyecto Star Wars - Frontend
 
 Este proyecto es un blog de Star Wars desarrollado como parte del Bootcamp de 4Geeks Academy. El propósito es proporcionar información y noticias sobre el universo de Star Wars.
+
+![Captura de Pantalla 2024-06-17 a las 10 08 23](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/787a7049-d4a8-4f05-823c-5bc7fd597108)![Captura de Pantalla 2024-06-17 a las 10 13 18](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/a2e2b3a1-e274-4fa9-a31b-92a934aa970d)
+![Captura de Pantalla 2024-06-17 a las 10 13 10](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/5a575e4e-34cf-4ca7-9f89-2df60c6b96af)
+![Captura de Pantalla 2024-06-17 a las 10 12 51](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/85af4043-10cb-4e9b-9612-032c481d0764)
+![Captura de Pantalla 2024-06-17 a las 10 12 04](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/4d3f848d-6e0c-4a31-89c7-8930e29eff46)
+![Captura de Pantalla 2024-06-17 a las 10 11 47](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/535c055e-ac36-480a-b570-e683194119c8)
+![Captura de Pantalla 2024-06-17 a las 10 08 40](https://github.com/superteclas/Proyecto-Starwars-Alvaro-Frontend/assets/147168257/2dc6ad29-21f5-4429-9b94-36e76af9027f)
+
+
 
 ## Tecnologías Utilizadas
 - **React**: Biblioteca de JavaScript para construir interfaces de usuario.
